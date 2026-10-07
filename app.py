@@ -340,64 +340,46 @@ def render_assistant(result: RAGResult, idx: int, pipeline: RAGPipeline) -> None
         render_sources(result, lang)
 
 
-def render_sidebar(index: VectorIndex, pipeline: RAGPipeline, model_name: str) -> tuple[int, str]:
-    """Quiet sidebar: About, Examples, Settings, Knowledge base, Clear conversation."""
+def render_sidebar(index: VectorIndex, pipeline: RAGPipeline) -> tuple[int, str]:
+    """Minimal sidebar: one-line about, settings, knowledge base summary, clear button.
+
+    Longer lists (topics, examples) sit in collapsed expanders to keep it clean.
+    """
     with st.sidebar:
         html_block(
-            '<div class="ag-side-label">เกี่ยวกับ · About</div>'
-            '<p class="ag-side-text">ผู้ช่วยตอบคำถามเรื่องการปลูกพืช โรค และแมลงศัตรูพืชในประเทศไทย '
-            "ด้วยเทคนิค RAG โดยอ้างอิงเฉพาะเอกสารจากหน่วยงานวิชาการ และแสดงแหล่งที่มาทุกคำตอบ</p>"
+            '<div class="ag-side-label ag-first">เกี่ยวกับ</div>'
+            '<p class="ag-side-text">ตอบคำถามโรคพืชและการเพาะปลูกจากเอกสารวิชาการ พร้อมแหล่งอ้างอิง</p>'
         )
 
-        html_block('<div class="ag-side-label">ตัวอย่างคำถาม · Examples</div>')
-        for i, (_, question) in enumerate(EXAMPLES[:4]):
-            with st.container(key=f"sidebar_example_{i}"):
-                st.button(question, key=f"sbbtn_{i}", on_click=ask, args=(question,), type="tertiary")
+        html_block('<div class="ag-side-label">การตั้งค่า</div>')
+        top_k = st.slider("จำนวนเอกสารอ้างอิง", min_value=1, max_value=MAX_TOP_K, value=DEFAULT_TOP_K)
+        language = st.selectbox("ภาษาของคำตอบ", options=list(LANGUAGE_OPTIONS), format_func=LANGUAGE_OPTIONS.get)
 
-        html_block('<div class="ag-side-label">การตั้งค่า · Settings</div>')
-        top_k = st.slider(
-            "จำนวนเอกสารที่ค้นคืน (top-k)",
-            min_value=1,
-            max_value=MAX_TOP_K,
-            value=DEFAULT_TOP_K,
-            help="จำนวนส่วนของเอกสาร (chunk) สูงสุดที่ใช้ประกอบคำตอบ",
-        )
-        language = st.selectbox(
-            "ภาษาของคำตอบ",
-            options=list(LANGUAGE_OPTIONS),
-            format_func=LANGUAGE_OPTIONS.get,
-            help="ค่าเริ่มต้นจะตอบเป็นภาษาเดียวกับคำถาม",
-        )
-
-        html_block('<div class="ag-side-label">คลังความรู้ · Knowledge base</div>')
-        chunk_counts = Counter(c.source_file for c in index.chunks)
         groups: dict[str, list] = {}
         for topic in pipeline.topics:
             groups.setdefault(topic.category, []).append(topic)
-        parts = [f'<p class="ag-kb-summary">{len(pipeline.topics)} เอกสาร · {len(index.chunks)} ส่วนข้อมูล (chunks)</p>']
-        for category, topics in groups.items():
-            label = CATEGORY_LABELS.get(category, {"th": category})["th"]
-            items = "".join(
-                f'<li>{esc(tp.topic_th)} <span title="chunks">({chunk_counts[tp.source_file]})</span></li>' for tp in topics
-            )
-            parts.append(
-                f'<div class="ag-kb-cat"><span>{esc(label)}</span><span class="ag-kb-count">{len(topics)}</span></div>'
-                f'<ul class="ag-kb-list">{items}</ul>'
-            )
-        html_block("".join(parts))
-
-        st.button(
-            "ล้างการสนทนา",
-            icon=":material/delete_sweep:",
-            on_click=clear_conversation,
-            width="stretch",
-        )
         html_block(
-            '<div class="ag-side-label">ข้อจำกัด · Disclaimer</div>'
-            '<p class="ag-side-small">ข้อมูลเพื่อการศึกษาและเป็นแนวทางเบื้องต้นเท่านั้น ไม่ใช้แทนคำแนะนำของเจ้าหน้าที่ส่งเสริมการเกษตร '
-            "อ่านฉลากก่อนใช้สารเคมีทุกครั้ง และไม่รองรับการวินิจฉัยจากรูปภาพ</p>"
-            f'<p class="ag-side-small" style="margin-top:.5rem">LLM: {esc(model_name)} (Groq) · Embedding: {esc(EMBEDDING_MODEL_NAME)}</p>'
+            '<div class="ag-side-label">คลังความรู้</div>'
+            f'<p class="ag-side-text">{len(pipeline.topics)} เอกสาร ใน {len(groups)} หมวด</p>'
         )
+        with st.expander("ดูหัวข้อทั้งหมด"):
+            chunk_counts = Counter(c.source_file for c in index.chunks)
+            parts = []
+            for category, topics in groups.items():
+                label = CATEGORY_LABELS.get(category, {"th": category})["th"]
+                items = "".join(
+                    f'<li>{esc(tp.topic_th)} <span class="ag-kb-n">{chunk_counts[tp.source_file]}</span></li>'
+                    for tp in topics
+                )
+                parts.append(f'<div class="ag-kb-cat">{esc(label)}</div><ul class="ag-kb-list">{items}</ul>')
+            html_block("".join(parts))
+        with st.expander("ตัวอย่างคำถาม"):
+            for i, (_, question) in enumerate(EXAMPLES[:4]):
+                with st.container(key=f"sidebar_example_{i}"):
+                    st.button(question, key=f"sbbtn_{i}", on_click=ask, args=(question,), type="tertiary")
+
+        st.button("ล้างการสนทนา", icon=":material/delete_sweep:", on_click=clear_conversation, width="stretch")
+        html_block('<p class="ag-side-small">เพื่อการศึกษา ไม่ใช้แทนคำแนะนำเจ้าหน้าที่เกษตร</p>')
     return top_k, language
 
 
@@ -434,7 +416,7 @@ def main() -> None:
         st.stop()
 
     pipeline = RAGPipeline(index, llm)
-    top_k, language_choice = render_sidebar(index, pipeline, model_name)
+    top_k, language_choice = render_sidebar(index, pipeline)
 
     render_header()
     if setup_notice:
