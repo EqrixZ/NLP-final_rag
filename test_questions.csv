@@ -1,0 +1,22 @@
+﻿id,question,expected_answer,language,source_file,answerable
+1,โรคไหม้ข้าวในระยะกล้ามีอาการอย่างไร,แผลสีน้ำตาลรูปตา หัวท้ายแหลม กลางแผลสีเทา กว้าง 2–5 มม. ยาว 10–15 มม. ถ้ารุนแรงกล้าแห้งฟุบตายคล้ายถูกไฟไหม้,th,01_rice_blast.md,True
+2,โรคขอบใบแห้งของข้าวเกิดจากเชื้ออะไร และแพร่ระบาดได้อย่างไร,เชื้อแบคทีเรีย Xanthomonas oryzae pv. oryzae เข้าทางรูน้ำที่ขอบใบหรือบาดแผล หยดน้ำเมือกบนแผลแพร่ไปกับน้ำฝน น้ำชลประทาน และลม เชื้ออยู่รอดในตอซัง ฟาง และวัชพืช,th,02_rice_bacterial_leaf_blight.md,True
+3,เพลี้ยกระโดดสีน้ำตาลทำให้ข้าวเสียหายอย่างไร และเป็นพาหะของโรคอะไร,ดูดกินน้ำเลี้ยงที่โคนต้น ทำให้ใบเหลืองแห้งคล้ายน้ำร้อนลวก (hopperburn) ข้าวแห้งตายเป็นหย่อม และเป็นพาหะโรคใบหงิกและโรคเขียวเตี้ย,th,03_rice_brown_planthopper.md,True
+4,โรคกาบใบแห้งในนาข้าวมีวิธีป้องกันกำจัดอย่างไร,ไถตากดินทำลายเม็ดขยายพันธุ์ กำจัดวัชพืชคันนา ปลูกไม่ให้แน่นเกิน ไม่ใส่ไนโตรเจนมากเกิน ใช้ชีววิธี และสารป้องกันกำจัดเชื้อรา เช่น โพรพิโคนาโซล หรือเพนไซคูรอน ตามอัตราบนฉลาก,th,04_rice_sheath_blight.md,True
+5,โรครากเน่าโคนเน่าทุเรียนเกิดจากเชื้ออะไร และมีอาการที่ลำต้นอย่างไร,เชื้อ Phytophthora palmivora เปลือกโคนต้นมีคราบฉ่ำน้ำ มีของเหลวสีน้ำตาลแดงไหลจากแผล ถากเปลือกเห็นเนื้อเยื่อสีน้ำตาล ถ้าลามรอบต้นใบร่วงและต้นตาย,th,05_durian_phytophthora.md,True
+6,หลังเก็บเกี่ยวทุเรียนควรดูแลและใส่ปุ๋ยอย่างไร,ตัดแต่งกิ่งแห้ง กิ่งเป็นโรค กิ่งกระโดง ใส่ปุ๋ยคอกร่วมกับปุ๋ยสูตรเสมอ เช่น 15-15-15 เพื่อฟื้นฟูต้นและสร้างใบ,th,06_durian_fertilizer_water.md,True
+7,ควรห่อผลมะม่วงเมื่อผลอายุประมาณกี่วัน,ประมาณ 60 วัน ด้วยถุงกระดาษ เพื่อป้องกันแมลงวันผลไม้และให้ผิวสวย,th,07_mango_anthracnose_powdery_mildew.md,True
+8,โรคใบด่างมันสำปะหลังมีอะไรเป็นพาหะ และควรจัดการอย่างไร,ไวรัส SLCMV มีแมลงหวี่ขาวยาสูบเป็นพาหะ และแพร่ผ่านท่อนพันธุ์ ใช้ท่อนพันธุ์สะอาด พันธุ์ทนทาน สำรวจแปลง ถอนทำลายต้นเป็นโรค,th,08_cassava_mosaic_mealybug_rootrot.md,True
+9,What causes chili anthracnose and how does it spread?,"Colletotrichum fungi (C. acutatum, C. capsici/truncatum, C. gloeosporioides); spores spread by rain/irrigation splash, wind and insects; survives on debris, weeds and is seed-borne.",en,09_chili_anthracnose.md,True
+10,How can I check in the field whether my tomato plant has bacterial wilt?,"Stem-in-water ooze test: cut a stem piece, suspend in clear water; milky white streams within ~3–5 minutes suggest bacterial wilt (Ralstonia solanacearum).",en,10_tomato_bacterial_wilt_virus_whitefly.md,True
+11,What is the difference between the economic injury level and the economic threshold in IPM?,EIL = pest density where damage cost equals control cost; economic (action) threshold = lower density at which to start control so the pest never reaches the EIL.,en,11_ipm_principles.md,True
+12,ระยะเก็บเกี่ยวปลอดภัย (PHI) คืออะไร,จำนวนวันที่ต้องเว้นจากการพ่นสารครั้งสุดท้ายจนถึงวันเก็บเกี่ยว เพื่อให้สารพิษตกค้างไม่เกินเกณฑ์ (MRL) ดูค่าจากฉลาก,th,12_safe_pesticide_use_phi.md,True
+13,วิธีขยายเชื้อราไตรโคเดอร์มาด้วยข้าวสุกทำอย่างไร,หุงข้าวค่อนข้างแข็ง ใส่ถุงขณะร้อน รอให้อุ่น ใส่หัวเชื้อ เขย่า เจาะรู วางแผ่ในที่ร่ม บ่ม 7 วัน จนเป็นสีเขียวทั่วถุง,th,13_biocontrol_trichoderma_bt.md,True
+14,The older lower leaves of my plant are turning uniformly yellow first. What could cause this?,"Likely nitrogen deficiency (mobile nutrient, shows on older leaves first).",en,14_symptom_diagnosis_guide.md,True
+15,ปุ๋ยสูตร 15-15-15 หมายความว่าอย่างไร,ปุ๋ย 100 กก. มีไนโตรเจน (N) 15 กก. ฟอสฟอรัส (P2O5) 15 กก. และโพแทสเซียม (K2O) 15 กก.,th,15_soil_fertilizer_basics.md,True
+16,เชื้อราไตรโคเดอร์มาช่วยป้องกันโรครากเน่าโคนเน่าทุเรียนได้อย่างไร และใช้อย่างไร,เป็นเชื้อราปฏิปักษ์ต่อเชื้อในดินรวมถึงไฟท็อปธอรา ใช้ผสมรำข้าวและปุ๋ยคอก 1:4:10 โรยในรัศมีทรงพุ่มหรือรองก้นหลุม (multi-document),th,05_durian_phytophthora.md;13_biocontrol_trichoderma_bt.md,True
+17,ราคาทุเรียนหมอนทองที่ตลาดวันนี้กิโลกรัมละเท่าไร,ไม่พบข้อมูลในเอกสารที่มี,th,,False
+18,How do I control coffee leaf rust?,I couldn't find this in the available documents.,en,,False
+19,โรคใบขาวอ้อยป้องกันอย่างไร,ไม่พบข้อมูลในเอกสารที่มี,th,,False
+20,What is the treatment for citrus greening (huanglongbing)?,I couldn't find this in the available documents.,en,,False
+21,โรคใบร่วงของยางพาราควรจัดการอย่างไร,ไม่พบข้อมูลในเอกสารที่มี,th,,False

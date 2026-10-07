@@ -1,0 +1,21 @@
+# Secrets — never commit
+.streamlit/secrets.toml
+.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Generated screenshot outputs (keep screenshots/ folder itself)
+screenshots.pdf
+screenshots.html

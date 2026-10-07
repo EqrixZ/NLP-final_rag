@@ -1,0 +1,9 @@
+[
+  {"file": "01_home.png", "title": "หน้าแรกของแอป (Home page)", "caption": "หน้าแรกเมื่อเปิดแอปบน Streamlit Community Cloud แสดงชื่อแอป ข้อความต้อนรับ และแถบด้านข้าง (sidebar) ที่มีคำอธิบาย ตัวอย่างคำถาม ตัวปรับ top-k ปุ่มล้างการสนทนา และข้อจำกัดความรับผิดชอบ\nURL: https://<your-app>.streamlit.app"},
+  {"file": "02_thai_question_sources.png", "title": "คำถามภาษาไทยพร้อมแหล่งอ้างอิง", "caption": "ถาม \"โรคไหม้ข้าวมีอาการอย่างไร และป้องกันได้อย่างไร\" บอตตอบเป็นภาษาไทยแบบมีโครงสร้าง (อาการ → สาเหตุ → การป้องกัน) พร้อมอ้างอิง [1], [2] และเปิด expander \"แหล่งข้อมูลที่ค้นพบ\" แสดงชื่อเอกสาร หัวข้อ คะแนนความคล้าย และเนื้อหา chunk"},
+  {"file": "03_english_question.png", "title": "คำถามภาษาอังกฤษ (English question)", "caption": "Asked \"How can I tell if my tomato plant has bacterial wilt?\" — the bot answers in English with inline citations from the English source document."},
+  {"file": "04_follow_up.png", "title": "การถามต่อเนื่อง (Multi-turn follow-up)", "caption": "ถามต่อว่า \"แล้วโรคนี้ป้องกันยังไง\" ระบบใช้ประวัติการสนทนาเขียนคำถามใหม่ (query rewriting) เป็นคำค้นที่สมบูรณ์ ซึ่งแสดงใน expander แหล่งข้อมูล"},
+  {"file": "05_unanswerable.png", "title": "คำถามที่ไม่มีในเอกสาร (Refusal)", "caption": "ถาม \"ราคาทุเรียนหมอนทองวันนี้เท่าไร\" ซึ่งไม่มีในคลังเอกสาร บอตตอบว่า \"ไม่พบข้อมูลในเอกสารที่มี\" แทนการเดาคำตอบ"},
+  {"file": "06_sidebar_controls.png", "title": "การตั้งค่าใน Sidebar", "caption": "ปรับ top-k ด้วย slider, คลิกตัวอย่างคำถามเพื่อถามทันที และปุ่ม \"ล้างการสนทนา\""},
+  {"file": "07_incognito.png", "title": "ทดสอบเปิดในโหมดไม่ระบุตัวตน (Incognito)", "caption": "เปิดลิงก์แอปในหน้าต่าง Incognito (ไม่ได้ล็อกอิน) แอปทำงานได้ตามปกติ แสดงว่าผู้ใช้ทั่วไปเข้าถึงได้และ API key ถูกเก็บใน Secrets ไม่ได้อยู่ในโค้ด"}
+]

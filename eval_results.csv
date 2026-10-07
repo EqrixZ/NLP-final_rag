@@ -1,0 +1,142 @@
+﻿id,question,language,answerable,expected_source,retrieved_files,top_score,retrieval_hit,chunks_above_threshold,refused,refusal_correct,false_refusal,cited,rewritten_query,answer,error
+1,โรคไหม้ข้าวในระยะกล้ามีอาการอย่างไร,th,True,01_rice_blast.md,01_rice_blast.md,0.9059,True,6,False,,False,1,โรคไหม้ข้าวในระยะกล้ามีอาการอย่างไร,"**อาการของโรคไหม้ข้าวในระยะกล้า**  
+- ใบมีจุดแผลสีน้ำตาลรูปร่างคล้ายตา (หัวท้ายแหลม) โดยตรงกลางแผลมีสีเทา [1]  
+- แผลกว้างประมาณ 2–5 มม. ยาว 10–15 มม. และสามารถลุกลามทั่วใบได้ [1]  
+- หากโรครุนแรง กล้าจะแห้งฟุบตายคล้ายถูกไฟไหม้ [1]",
+2,โรคขอบใบแห้งของข้าวเกิดจากเชื้ออะไร และแพร่ระบาดได้อย่างไร,th,True,02_rice_bacterial_leaf_blight.md,02_rice_bacterial_leaf_blight.md,0.9364,True,6,False,,False,2,โรคขอบใบแห้งของข้าวเกิดจากเชื้ออะไร และแพร่ระบาดได้อย่างไร,"**สาเหตุ (Cause)**  
+- โรคขอบใบแห้งเกิดจากเชื้อแบคทีเรีย *Xanthomonas oryzae* pv. *oryzae* (Xoo) [2]  
+
+**การแพร่ระบาด (Spread)**  
+- เชื้อเข้าสู่ต้นข้าวทางรูน้ำที่ขอบใบหรือทางบาดแผล แล้วเจริญอยู่ในท่อลำเลียงน้ำ [2]  
+- เชื้อสร้างหยดน้ำเมือก (bacterial ooze) บนแผล ซึ่งแพร่ไปกับน้ำฝน, น้ำชลประทาน และลม [2]  
+- เชื้อยังอยู่รอดในตอซัง, ฟาง, ข้าวงอกจากตอ และวัชพืชบางชนิด [2]",
+3,เพลี้ยกระโดดสีน้ำตาลทำให้ข้าวเสียหายอย่างไร และเป็นพาหะของโรคอะไร,th,True,03_rice_brown_planthopper.md,03_rice_brown_planthopper.md,0.9228,True,6,False,,False,1;5,เพลี้ยกระโดดสีน้ำตาลทำให้ข้าวเสียหายอย่างไร และเป็นพาหะของโรคอะไร,"**อาการ/ความเสียหาย (Symptoms & Damage)**  
+- ตัวอ่อนและตัวเต็มวัยดูดน้ำเลี้ยงจากท่อน้ำท่ออาหารที่โคนต้น ทำให้ใบเหลืองและแห้งคล้ายถูกน้ำร้อนลวก (อาการไหม้หรือ hopperburn) → ต้นข้าวแห้งตายเป็นหย่อม ๆ โดยมักพบในระยะแตกกอถึงออกรวง [1]  
+- โคนต้นมักมีมูลหวานและราดำเป็นสัญญาณของการระบาด [1]  
+
+**พาหะของโรค (Virus Vectors)**  
+- พาหะนำโรคไวรัส **โรคใบหงิก (rice ragged stunt)**: ทำให้ต้นแคระแกร็น ใบสีเขียว แคบและสั้น ปลายใบบิดเป็นเกลียว [1]  
+- พาหะนำโรคไวรัส **โรคเขียวเตี้ย (rice grassy stunt)**: ทำให้ต้นเตี้ยแตกกอมาก ใบเล็กแคบ [1][5]",
+4,โรคกาบใบแห้งในนาข้าวมีวิธีป้องกันกำจัดอย่างไร,th,True,04_rice_sheath_blight.md,04_rice_sheath_blight.md;02_rice_bacterial_leaf_blight.md,0.9209,True,6,False,,False,1;2;4;5,โรคกาบใบแห้งในนาข้าวมีวิธีป้องกันกำจัดอย่างไร,"**การป้องกัน**  
+- ไถพลิกหน้าดินและตากแดดหลังเก็บเกี่ยว ก่อนเริ่มฤดูใหม่ เพื่อทำลายเม็ดขยายพันธุ์ของเชื้อรา [1]  
+- กำจัดวัชพืชตามคันนาและแหล่งน้ำที่เป็นที่อาศัยของเชื้อ [1]  
+- ใช้อัตราเมล็ดพันธุ์ที่เหมาะสมและปลูกระยะห่างพอ ให้ต้นมีทรงพุ่มโปร่งและอากาศถ่ายเท [1]  
+- ระบายน้ำออกจากแปลงเป็นครั้งคราวในช่วงต้นฤดูเพื่อลดความรุนแรงของโรค [1][2]  
+- ใส่ปุ๋ยไนโตรเจนในระดับที่เหมาะสมตามฤดูปลูกและผลการวิเคราะห์ดิน ไม่ใส่มากเกินไป [2]  
+- ใช้ชีวภัณฑ์เชื้อแบคทีเรียปฏิปักษ์ *Bacillus subtilis* ตามอัตราที่ระบุบนฉลาก [2]  
+
+**การกำจัด**  
+- ใช้สารป้องกันกำจัดเชื้อรา เช่น โพรพิโคนาโซล (propiconazole) หรือเพนไซคูรอน (pencycuron) ตามอัตราที่ระบุบนฉลาก [2][5]  
+- พ่นสารเฉพาะบริเวณที่เริ่มพบโรค ไม่จำเป็นต้องพ่นทั้งแปลง [5]  
+- พิจารณาคลุกเมล็ดพันธุ์ด้วยสารป้องกันกำจัดเชื้อราเป็นอีกทางเลือกหนึ่ง [5]  
+
+**ข้อควรระวัง**  
+- อย่าใช้สารชนิดเดียวกันซ้ำหลายครั้งต่อเนื่องเพื่อลดความเสี่ยงต่อการดื้อสาร [4]  
+- ก่อนใช้สารทุกครั้งต้องอ่านฉลากอย่างละเอียด ใช้ตามอัตราที่ระบุ สวมอุปกรณ์ป้องกัน และปรึกษาเจ้าหน้าที่ส่งเสริมการเกษตร [4]  
+
+⚠️ อ่านฉลากและปฏิบัตตามคำแนะนำอย่างเคร่งครัด และปรึกษาเจ้าหน้าที่ส่งเสริมการเกษตรในพื้นที่",
+5,โรครากเน่าโคนเน่าทุเรียนเกิดจากเชื้ออะไร และมีอาการที่ลำต้นอย่างไร,th,True,05_durian_phytophthora.md,05_durian_phytophthora.md,0.9188,True,6,False,,False,6,โรครากเน่าโคนเน่าทุเรียนเกิดจากเชื้ออะไร และมีอาการที่ลำต้นอย่างไร,"**สาเหตุ (Cause)**  
+- เชื้อ *Phytophthora palmivora* (ราน้ำ/oomycete) เป็นสาเหตุของโรครากเน่าโคนเน่าทุเรียน [6]  
+
+**อาการที่ลำต้นและกิ่ง (Stem Symptoms)**  
+- เปลือกมีคราบคล้ายน้ำเปียก; ช่วงเช้าที่อากาศชื้นอาจมีของเหลวสีน้ำตาลแดงไหลออกจากแผลแล้วแห้งเป็นคราบเมื่อแดดจัด  
+- หากถากเปลือกจะเห็นเนื้อเยื่อเปลือกและเนื้อไม้เป็นสีน้ำตาล  
+- เมื่อแผลลามรอบโคนต้น ใบจะร่วงหมดและต้นยืนต้นตาย  
+
+⚠️ อ่านฉลากและปฏิบัติตามคำแนะนำทุกครั้ง สวมอุปกรณ์ป้องกันขณะใช้สาร หากพบการระบาดให้แจ้งเจ้าหน้าที่ส่งเสริมการเกษตร สำนักงานเกษตรอำเภอ หรือสำนักงานเกษตรจังหวัด.",
+6,หลังเก็บเกี่ยวทุเรียนควรดูแลและใส่ปุ๋ยอย่างไร,th,True,06_durian_fertilizer_water.md,06_durian_fertilizer_water.md,0.9189,True,6,False,,False,3;5;6,หลังเก็บเกี่ยวทุเรียนควรดูแลและใส่ปุ๋ยอย่างไร,"**การดูแลหลังเก็บเกี่ยว**  
+- เริ่มทำทันทีหลังเก็บเกี่ยว: ตัดกิ่งแห้ง‑กิ่งเป็นโรคและกิ่งกระโดงให้ต้นมีโครงสร้างโปร่ง [3]  
+- ตรวจสอบระบบน้ำและทำให้มีการระบายน้ำดีเพื่อป้องกันรากเน่า [3]  
+- รักษาความชื้นให้สม่ำเสมอโดยให้น้ำเมื่อฝนหยุดและหลีกเลี่ยงน้ำขัง [6]  
+
+**การใส่ปุ๋ย**  
+- ใส่ปุ๋ยคอกร่วมกับปุ๋ยเคมีสูตรเสมอ เช่น 15‑15‑15 โดยใช้ปุ๋ยคอกราว 5–10 กก./ต้น และ 15‑15‑15 ประมาณ 1–2 กก./ต้น [3]  
+- ช่วงฟื้นฟูต้นต้องการไนโตรเจนสูงเพื่อกระตุ้นการสร้างใบใหม่และสะสมอาหาร [3]  
+- ปรับอัตราปุ๋ยตามผลการวิเคราะห์ดิน, อายุ, พันธุ์และสภาพพื้นที่ [5]  
+
+⚠️ อ่านฉลากและปฏิบัติตามคำแนะนำอย่างเคร่งครัด และปรึกษาเจ้าหน้าที่ส่งเสริมการเกษตรในพื้นที่",
+7,ควรห่อผลมะม่วงเมื่อผลอายุประมาณกี่วัน,th,True,07_mango_anthracnose_powdery_mildew.md,07_mango_anthracnose_powdery_mildew.md,0.9084,True,6,False,,False,1,ควรห่อผลมะม่วงเมื่อผลอายุประมาณกี่วัน,ควรห่อผลมะม่วงเมื่อผลอายุประมาณ 60 วัน [1],
+8,โรคใบด่างมันสำปะหลังมีอะไรเป็นพาหะ และควรจัดการอย่างไร,th,True,08_cassava_mosaic_mealybug_rootrot.md,08_cassava_mosaic_mealybug_rootrot.md,0.9108,True,6,False,,False,1;2;3,โรคใบด่างมันสำปะหลังมีอะไรเป็นพาหะ และควรจัดการอย่างไร,"**พาหะของโรคใบด่างมันสำปะหลัง**  
+- แมลงหวี่ขาวยาสูบ (*Bemisia tabaci*) เป็นพาหะของเชื้อไวรัส Sri Lankan cassava mosaic virus (SLCMV) [1]  
+
+**การจัดการ**  
+- **การกำจัดต้นที่เป็นโรค**  
+  - หากเป็นหย่อม: ถอนทำลายต้นที่เป็นโรคโดยฝังกลบในหลุมลึก, ใส่ถุงหรือกระสอบมัดปากตากแดดจนตาย, หรือบดสับแล้วคลุมพลาสติกตากแดด [2]  
+  - หากกระจายทั่วแปลง: ทำลายทั้งแปลงด้วยวิธีเดียวกัน [2]  
+- **การควบคุมแหล่งพาหะและสภาพแวดล้อม**  
+  - กำจัดวัชพืชและหลีกเลี่ยงพืชอาศัยของแมลงหวี่ขาวหรือของไวรัสรอบแปลง [2]  
+  - แจ้งเจ้าหน้าที่ส่งเสริมการเกษตรหรือสำนักงานเกษตรอำเภอเพื่อยืนยันและควบคุมร่วมกัน [2]  
+  - เมื่อแมลงหวี่ขาวระบาด สามารถใช้สารกำจัดแมลงตามฉลาก (เช่น อิมิดาโคลพริด หรือไบเฟนทริน) [2]  
+- **การใช้ท่อนพันธุ์และพันธุ์ที่ทนทาน**  
+  - ใช้ท่อนพันธุ์สะอาดจากแหล่งที่เชื่อถือได้และเลือกพันธุ์ที่ทางราชการแนะนำว่าทนทาน (เช่น ระยอง 72, เกษตรศาสตร์ 50, ห้วยบง 60) [3]  
+  - หลีกเลี่ยงการใช้หรือเคลื่อนย้ายท่อนพันธุ์จากแหล่งที่มีโรคหรือไม่ทราบแหล่งที่มา [3]  
+- **การสำรวจและเฝ้าระวัง**  
+  - สำรวจแปลงสม่ำเสมอ; หากพบโรคให้ถอนทำลายต้นที่เป็นโรคทันที [3]  
+
+⚠️ อ่านฉลากและปฏิบัติตามคำแนะนำอย่างเคร่งครัด และปรึกษาเจ้าหน้าที่ส่งเสริมการเกษตรในพื้นที่",
+9,What causes chili anthracnose and how does it spread?,en,True,09_chili_anthracnose.md,09_chili_anthracnose.md,0.8914,True,6,False,,False,2;3,What causes chili anthracnose and how does it spread?,"**Cause**  
+- Chili anthracnose is caused by several fungi in the genus *Colletotrichum*, mainly *C. acutatum*, *C. capsici* (also listed as *C. truncatum*), and *C. gloeosporioides*[2].  
+
+**Spread**  
+- The spores are dispersed primarily by rain splash and irrigation water, and can also be carried by wind and insects[3].  
+- The fungus can survive on crop debris, weeds, other host plants, and can be seed‑borne, providing additional sources for spread[3].",
+10,How can I check in the field whether my tomato plant has bacterial wilt?,en,True,10_tomato_bacterial_wilt_virus_whitefly.md,10_tomato_bacterial_wilt_virus_whitefly.md,0.8886,True,6,False,,False,1;3,How can I check in the field whether my tomato plant has bacterial wilt?,"**Stem‑in‑water ooze test (field diagnosis)**  
+
+- **Cut a clean section of the lower stem** from a freshly wilted tomato plant[1].  
+- **Place the cut end in a clear glass of water** so it just touches the water[1].  
+- **Observe the water:** within about 3–5 minutes you should see milky‑white threads of bacteria and slime streaming from the cut end; in severe infections the water may become cloudy in 10–15 minutes[3].  
+- **Interpretation:** a positive milky stream strongly suggests bacterial wilt, while the absence of a stream does not rule out other causes such as Fusarium, root rot or drought[3].",
+11,What is the difference between the economic injury level and the economic threshold in IPM?,en,True,11_ipm_principles.md,11_ipm_principles.md,0.877,True,6,False,,False,1;2,What is the difference between the economic injury level and the economic threshold in IPM?,"**Economic Injury Level (EIL)**  
+- The pest density at which the cost of damage equals the cost of control [1][2].
+
+**Economic Threshold (or Economic Action Threshold)**  
+- A lower pest density at which control should be started so the pest never reaches the injury level [1].
+
+In short, the EIL marks the point where damage and control costs are equal, while the economic threshold is set below that point to trigger timely action and avoid reaching the EIL.",
+12,ระยะเก็บเกี่ยวปลอดภัย (PHI) คืออะไร,th,True,12_safe_pesticide_use_phi.md,12_safe_pesticide_use_phi.md;03_rice_brown_planthopper.md,0.914,True,6,False,,False,1;2,ระยะเก็บเกี่ยวปลอดภัย (PHI) คืออะไร,ระยะเก็บเกี่ยวปลอดภัย (PHI) คือจำนวนวันที่ต้องเว้นนับจากการพ่นสารเคมีครั้งสุดท้ายจนถึงวันเก็บเกี่ยว เพื่อให้สารสลายตัวจนสารพิษตกค้างไม่เกินเกณฑ์ที่กำหนด [1][2],
+13,วิธีขยายเชื้อราไตรโคเดอร์มาด้วยข้าวสุกทำอย่างไร,th,True,13_biocontrol_trichoderma_bt.md,13_biocontrol_trichoderma_bt.md;05_durian_phytophthora.md,0.9185,True,6,False,,False,1;2;3,วิธีขยายเชื้อราไตรโคเดอร์มาด้วยข้าวสุกทำอย่างไร,"**วิธีขยายเชื้อราไตรโคเดอร์มาด้วยข้าวสุก**
+
+- **เตรียมข้าวสุก**  
+  - หุงข้าวสารด้วยหม้อหุงข้าวไฟฟ้า ใช้อัตรา 3 ส่วนข้าวต่อ 2 ส่วนน้ำ ให้ได้ข้าวสุกค่อนข้างแข็ง [1]  
+  - ตักข้าวร้อนใส่ถุงพลาสติกใสประมาณ 250 กรัมต่อถุง (บางแหล่งใช้ 0.5 กก.) พับปากถุงแล้วรอให้ข้าวอุ่น [1]
+
+- **ใส่หัวเชื้อ**  
+  - เติมหัวเชื้อไตรโคเดอร์มา 5 หยด (แบบน้ำ) หรือปริมาณตามคำแนะนำของเชื้อแบบผง [3]  
+  - รัดยางรอบถุงแล้วเขย่าให้เชื้อกระจายทั่ว [3]  
+  - ใช้เข็มสะอาดเจาะรูใต้ยางรัดประมาณ 30 รูเพื่อให้มีอากาศเข้า [3]
+
+- **การบ่ม**  
+  - วางถุงแผ่ราบในที่ร่มที่มีแสงสว่างและอากาศถ่ายเท ห้ามวางซ้อนกันและต้องป้องกันมด [3]  
+  - หลังจาก 2 วันให้เขย่าถุงเบา ๆ แล้วบ่มต่อจนครบ 7 วัน [2][3]  
+  - เชื้อที่ดีจะเป็นสีเขียวทั่วถุงและไม่มีเชื้ออื่นปน [2][3]  
+
+- **ข้อควรระวัง**  
+  - ใช้หัวเชื้อจากหน่วยงานที่เชื่อถือได้; ไม่ใช้เชื้อสดที่ผลิตเองเป็นหัวเชื้อต่อ เพราะเชื้ออ่อนแอลง [2]  
+  - ถุงที่มีเชื้อปนเปื้อนต้องคัดทิ้ง [2]",
+14,The older lower leaves of my plant are turning uniformly yellow first. What could cause this?,en,True,14_symptom_diagnosis_guide.md,14_symptom_diagnosis_guide.md,0.8822,True,6,False,,False,1;2,The older lower leaves of my plant are turning uniformly yellow first. What could cause this?,"**Symptoms**  
+- Uniform yellowing of the older, lower leaves first, while the rest of the plant remains pale.  
+
+**Likely Cause**  
+- Nitrogen deficiency — nitrogen is a mobile nutrient that shows deficiency symptoms on older foliage first[1][2].  
+
+**Management**  
+- Conduct a soil test to confirm nitrogen levels.  
+- Apply a balanced nitrogen fertilizer according to the test results and label directions.  
+- Incorporate organic matter (e.g., compost or well‑rotted manure) to improve nitrogen availability.  
+- Ensure adequate watering and avoid leaching, which can wash nitrogen away.",
+15,ปุ๋ยสูตร 15-15-15 หมายความว่าอย่างไร,th,True,15_soil_fertilizer_basics.md,15_soil_fertilizer_basics.md;06_durian_fertilizer_water.md,0.9029,True,6,False,,False,1,ปุ๋ยสูตร 15-15-15 หมายความว่าอย่างไร,"**ความหมายของสูตร 15‑15‑15**  
+- ตัวเลข 15‑15‑15 บนกระสอบปุ๋ยเคมีหมายถึงในปุ๋ยหนัก 100 กิโลกรัม มี ไนโตรเจน (N) 15 กก., ฟอสฟอรัสในรูป P₂O₅ 15 กก., และ โพแทสเซียมในรูป K₂O 15 กก. [1]",
+16,เชื้อราไตรโคเดอร์มาช่วยป้องกันโรครากเน่าโคนเน่าทุเรียนได้อย่างไร และใช้อย่างไร,th,True,05_durian_phytophthora.md;13_biocontrol_trichoderma_bt.md,05_durian_phytophthora.md;13_biocontrol_trichoderma_bt.md,0.9118,True,6,False,,False,1;2;3,เชื้อราไตรโคเดอร์มาช่วยป้องกันโรครากเน่าโคนเน่าทุเรียนได้อย่างไร และใช้อย่างไร,"**วิธีการทำงานของไตรโคเดอร์มา**  
+- ไตรโคเดอร์มาเป็นเชื้อราปฏิปักษ์ในดินที่ช่วยยับยั้งเชื้อราที่ทำให้เกิดโรคราก‑โคน‑เน่า (เช่น Phytophthora) รวมถึงเชื้อราอื่น ๆ เช่น ฟิวซาเรียม, ไรช็อกโทเนีย, สเคลอโรเทียม และไฟท็อปธอรา [2]  
+
+**วิธีการใช้ไตรโคเดอร์มาเพื่อป้องกันโรคราก‑โคน‑เน่า**  
+- **ผสมกับรำข้าวและปุ๋ยคอก** (สัดส่วน 1 : 4 : 10 ตามน้ำหนัก) แล้วโรยรอบรัศมีทรงพุ่มหรือรองก้นหลุมก่อนปลูก [1]  
+- **คลุกเมล็ดพันธุ์**: ใช้เชื้อ 10–20 กรัมต่อเมล็ดพันธุ์ 1 กิโลกรัม [3]  
+- **ผสมกับดินหรือปุ๋ยหมัก**: เชื้อสด 1 กก. + รำละเอียด 4 กก. + ปุ๋ยหมักหรือปุ๋ยคอก 100 กก. คลุกให้ชื้นเล็กน้อย แล้วทิ้งในร่ม 3 คืน ก่อนหว่านในแปลง 50–100 กรัมต่อ ตร.ม. หรือรองก้นหลุม 50–100 กรัมต่อหลุม [3]  
+
+การใช้ตามวิธีเหล่านี้ช่วยลดปริมาณเชื้อ Phytophthora ในดินและลดความเสี่ยงของโรคราก‑โคน‑เน่าในต้นทุเรียน.",
+17,ราคาทุเรียนหมอนทองที่ตลาดวันนี้กิโลกรัมละเท่าไร,th,False,,03_rice_brown_planthopper.md;06_durian_fertilizer_water.md;13_biocontrol_trichoderma_bt.md;05_durian_phytophthora.md,0.8198,,6,True,True,,,ราคาทุเรียนหมอนทองที่ตลาดวันนี้กิโลกรัมละเท่าไร,ไม่พบข้อมูลในเอกสารที่มี,
+18,How do I control coffee leaf rust?,en,False,,09_chili_anthracnose.md;14_symptom_diagnosis_guide.md;10_tomato_bacterial_wilt_virus_whitefly.md,0.8248,,6,True,True,,,How do I control coffee leaf rust?,I couldn't find this in the available documents.,
+19,โรคใบขาวอ้อยป้องกันอย่างไร,th,False,,08_cassava_mosaic_mealybug_rootrot.md;02_rice_bacterial_leaf_blight.md,0.8785,,6,True,True,,,โรคใบขาวอ้อยป้องกันอย่างไร,ไม่พบข้อมูลในเอกสารที่มี,
+20,What is the treatment for citrus greening (huanglongbing)?,en,False,,09_chili_anthracnose.md;14_symptom_diagnosis_guide.md,0.806,,6,True,True,,,What is the treatment for citrus greening (huanglongbing)?,I couldn't find this in the available documents.,
+21,โรคใบร่วงของยางพาราควรจัดการอย่างไร,th,False,,04_rice_sheath_blight.md;02_rice_bacterial_leaf_blight.md;08_cassava_mosaic_mealybug_rootrot.md;05_durian_phytophthora.md,0.858,,6,True,True,,,โรคใบร่วงของยางพาราควรจัดการอย่างไร,ไม่พบข้อมูลในเอกสารที่มี,
