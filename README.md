@@ -1,6 +1,6 @@
-# 🌱 ผู้ช่วยผู้เชี่ยวชาญด้านการเกษตรและโรคพืช (Agriculture & Plant Disease Expert Assistant)
+# ผู้ช่วยด้านการเกษตรและโรคพืช (Agriculture & Plant Disease Assistant)
 
-แชตบอต **Retrieval-Augmented Generation (RAG)** ภาษาไทย/อังกฤษ ที่ตอบคำถามเรื่องการปลูกพืชและโรค/แมลงศัตรูพืชในประเทศไทย **โดยอ้างอิงเฉพาะเอกสารในคลังความรู้ (`data/`)** พร้อมแสดงแหล่งที่มาทุกคำตอบ และตอบว่า "ไม่พบข้อมูลในเอกสารที่มี" เมื่อคลังความรู้ไม่มีคำตอบ แทนการเดา
+แชตบอต **Retrieval-Augmented Generation (RAG)** ภาษาไทย/อังกฤษ ที่ตอบคำถามเรื่องการปลูกพืชและโรค/แมลงศัตรูพืชในประเทศไทย **โดยอ้างอิงเฉพาะเอกสารในคลังความรู้ (`data/`)** พร้อมแสดงแหล่งที่มาทุกคำตอบ และเมื่อคลังความรู้ไม่มีคำตอบ จะแสดงการ์ด "ไม่พบข้อมูลในเอกสารที่มี" พร้อมหัวข้อใกล้เคียงและคำถามแนะนำ แทนการเดา
 
 > สร้างด้วย Streamlit · sentence-transformers (`intfloat/multilingual-e5-small`) · FAISS · PyThaiNLP · Groq API
 
@@ -19,14 +19,17 @@
 
 ## 2. ฟีเจอร์ (Features)
 
-- 💬 แชตต่อเนื่องหลายรอบ (multi-turn) ด้วย `st.chat_message` / `st.chat_input` / `st.session_state`
-- 🇹🇭🇬🇧 ถาม-ตอบได้ทั้งภาษาไทยและอังกฤษ (ตอบเป็นภาษาเดียวกับคำถาม แม้เอกสารจะเป็นอีกภาษา — cross-lingual retrieval)
-- 📚 **ทุกคำตอบแสดงแหล่งข้อมูล**: expander ใต้คำตอบแสดงชื่อเอกสาร หัวข้อ (section) คะแนนความคล้าย (similarity) ไฟล์ ลิงก์แหล่งที่มา และเนื้อหา chunk พร้อมเครื่องหมาย ✅ สำหรับ chunk ที่ถูกอ้างอิงในคำตอบ
-- 🔁 **Follow-up query rewriting**: เขียนคำถามต่อเนื่อง เช่น "แล้วโรคนี้ป้องกันยังไง" ใหม่เป็นคำค้นที่สมบูรณ์ ("วิธีป้องกันโรคไหม้ข้าว") ก่อนค้นหา
-- 🚫 **Refusal**: ตอบ "ไม่พบข้อมูลในเอกสารที่มี" / "I couldn't find this in the available documents." เมื่อไม่มีข้อมูล
-- ⚠️ ไม่แต่งชื่อการค้า/อัตราสารเคมี และเพิ่มคำเตือนความปลอดภัยเมื่อพูดถึงสารเคมี
-- ⚙️ Sidebar: คำอธิบายแอป, ตัวอย่างคำถาม (คลิกได้), slider top-k, ปุ่มล้างการสนทนา, ข้อจำกัดความรับผิดชอบ
-- 🔐 API key อ่านจาก `st.secrets` เท่านั้น (fallback เป็น environment variable สำหรับ local dev) — ไม่มี key ในโค้ด
+- **แชตต่อเนื่องหลายรอบ (multi-turn)** ด้วย `st.chat_input` + `st.session_state` และ UI ที่ออกแบบเอง (ข้อความผู้ใช้ชิดขวา, คำตอบบนการ์ดสีขาว)
+- **ถาม-ตอบได้ทั้งภาษาไทยและอังกฤษ** ตอบเป็นภาษาเดียวกับคำถาม (หรือเลือกภาษาใน sidebar) แม้เอกสารจะเป็นอีกภาษา (cross-lingual retrieval)
+- **ทุกคำตอบแสดงแหล่งข้อมูล**: expander "แหล่งข้อมูล (N)" ใต้คำตอบ แต่ละแหล่งเป็นการ์ดเล็ก มีเลขลำดับ ชื่อเอกสาร (ลิงก์ไปต้นฉบับ) หัวข้อ แถบความเกี่ยวข้อง คะแนน similarity และข้อความตัวอย่างที่ไฮไลต์คำที่ตรงกับคำถาม พร้อมป้าย "อ้างอิงในคำตอบ"
+- **Citation badges**: `[1]`, `[2]` ในคำตอบแสดงเป็นป้ายตัวยกขนาดเล็ก
+- **Follow-up query rewriting**: คำถามต่อเนื่อง เช่น "แล้วโรคนี้ป้องกันยังไง" ถูกเขียนใหม่เป็น "วิธีป้องกันโรคไหม้ข้าว" ก่อนค้นหา
+- **การจัดการกรณีไม่พบข้อมูล 2 ชั้น** (ดูหัวข้อ 3.1): ได้ผลลัพธ์แบบมีโครงสร้าง `status="no_info"` และแสดงการ์ดที่สงบ เป็นกลาง (ไม่ใช่กล่อง error สีแดง) พร้อมหัวข้อใกล้เคียง คำถามแนะนำที่คลิกได้ และคำแนะนำให้ติดต่อสำนักงานเกษตรอำเภอ
+- **Safety note อัตโนมัติ**: เมื่อคำตอบกล่าวถึงสารเคมี แอปแสดงแถบเตือนขอบสีอำพัน "อ่านฉลากผลิตภัณฑ์ก่อนใช้ทุกครั้ง และปรึกษาเจ้าหน้าที่ส่งเสริมการเกษตรในพื้นที่" และ LLM ถูกห้ามแต่งชื่อการค้า/อัตราสารเคมี
+- **หน้าเริ่มต้น (empty state)**: การ์ดคำถามตัวอย่าง 6 ข้อ จัดกลุ่มตามหัวข้อ (ข้าว ทุเรียน วินิจฉัยอาการ ความปลอดภัย) คลิกเพื่อถามทันที
+- **Sidebar**: เกี่ยวกับ, ตัวอย่างคำถาม, การตั้งค่า (top-k, ภาษาของคำตอบ), คลังความรู้ (หัวข้อแยกตามพืช พร้อมจำนวนเอกสาร/chunk), ปุ่มล้างการสนทนา, ข้อจำกัดความรับผิดชอบ
+- **สถานะการทำงาน**: แสดงขั้นตอน "กำลังค้นหาเอกสาร..." แล้ว "กำลังเรียบเรียงคำตอบ..." และข้อความ error ที่เป็นมิตร ไม่ใช้ศัพท์เทคนิค
+- **API key อ่านจาก `st.secrets` เท่านั้น** (fallback เป็น environment variable สำหรับ local dev) ไม่มี key ในโค้ด
 
 ## 3. สถาปัตยกรรม (Architecture)
 
@@ -44,24 +47,47 @@ flowchart LR
     RW --> S["Embed 'query: ...'<br/>+ FAISS top-k"]
     E --> S
     S --> T{"score ≥ threshold?"}
-    T -- "ไม่มีเลย" --> X["ตอบ refusal ทันที<br/>(ไม่เรียก LLM)"]
+    T -- "ไม่มีเลย (ชั้นที่ 1)" --> X["status = no_info<br/>(ไม่เรียก LLM)"]
     T -- มี --> P["Prompt: system rules +<br/>numbered context [1]..[k]"]
     P --> L["Groq LLM<br/>temperature 0.1"]
-    L --> O["คำตอบ + citations [n]<br/>+ expander แหล่งข้อมูล"]
+    L --> N{"ตอบ [[NO_INFO]]?"}
+    N -- "ใช่ (ชั้นที่ 2)" --> X
+    N -- ไม่ --> O["status = answered<br/>คำตอบ + citations [n]<br/>+ การ์ดแหล่งข้อมูล"]
+    X --> C2["การ์ดไม่พบข้อมูล<br/>หัวข้อใกล้เคียง + คำถามแนะนำ"]
 ```
+
+### 3.1 การจัดการกรณีไม่พบข้อมูล (No-information handling)
+
+| ชั้น | เงื่อนไข | การทำงาน |
+|---|---|---|
+| ชั้นที่ 1: Retrieval | คะแนน similarity สูงสุดต่ำกว่า threshold (0.78) | ไม่เรียก LLM เลย ประหยัดโควตาและไม่มีโอกาส hallucinate |
+| ชั้นที่ 2: LLM | context ไม่มีคำตอบ: system prompt สั่งให้ตอบ `[[NO_INFO]]` เท่านั้น | แอปตรวจจับ sentinel แล้วแสดงการ์ดแทนข้อความดิบ (ผู้ใช้ไม่เห็น `[[NO_INFO]]`) |
+
+ทั้งสองชั้นสร้างผลลัพธ์รูปแบบเดียวกัน (`RAGResult.to_dict()`):
+
+```json
+{"status": "no_info", "answer": "ไม่พบข้อมูลในเอกสารที่มี", "closest_sources": [{"title": "...", "section": "...", "score": 0.85}], "suggestions": ["โรคไหม้ข้าวมีอาการอย่างไร", "..."]}
+```
+
+- **หัวข้อใกล้เคียง (closest topics)**: เอกสารที่ใกล้ที่สุดไม่เกิน 3 เรื่อง (ไม่ซ้ำเอกสาร) เฉพาะที่คะแนน ≥ 0.76 ถ้าไม่มี จะแสดงหัวข้อหลักที่ครอบคลุมแทน (หัวข้อแรกของแต่ละหมวดพืช)
+- **คำถามแนะนำ (suggestions)**: 3 ข้อ สร้างจาก template ตามชื่อหัวข้อและประเภทเอกสาร (โรค / แมลง / แนวปฏิบัติ) ใน metadata ของไฟล์ (`topic_th`, `topic_en`, `kind`) จึง**ไม่ต้องเรียก LLM เพิ่ม** เช่น "{โรค}มีอาการอย่างไร", "How can I control {pest}?"
+- หัวข้อใกล้เคียงแสดงเฉพาะในการ์ด **ไม่ถูกใส่เป็น citation ในคำตอบ** และ expander แสดงเป็น "เอกสารที่ใกล้เคียงที่สุด (ความเกี่ยวข้องต่ำ)" / "Closest matches (low relevance)"
+- `evaluate.py` และ unit tests ตรวจว่าคำถามที่ตอบไม่ได้ได้ `status == "no_info"`
 
 โครงสร้างไฟล์:
 
 ```
 app.py                      # Streamlit UI (entry point)
+styles.css                  # CSS ทั้งหมดของแอป (inject ครั้งเดียว)
 rag/
-  config.py                 # ค่าตั้งค่าทั้งหมด (โมเดล, chunk size, top-k, threshold, refusal)
+  config.py                 # ค่าตั้งค่าทั้งหมด (โมเดล, chunk size, top-k, threshold, no-info)
   textutils.py              # ทำความสะอาดข้อความ, ตรวจภาษา
   loader.py                 # โหลดไฟล์ + parse metadata header
   chunker.py                # แบ่ง chunk แบบ structure-aware + Thai-aware
   index.py                  # embedding + FAISS index + search
   prompts.py                # system prompt, rewrite prompt, จัดรูป context
   llm.py                    # Groq client + จัดการ error เป็นข้อความที่เป็นมิตร
+  topics.py                 # catalog หัวข้อ, คำถามแนะนำแบบ template, ตรวจจับคำเกี่ยวกับสารเคมี
   pipeline.py               # RAGPipeline (ใช้ร่วมกันระหว่าง app.py และ evaluate.py)
 data/                       # คลังความรู้ 15 ไฟล์
 test_questions.csv          # ชุดทดสอบ 21 คำถาม (UTF-8 BOM)
@@ -90,11 +116,33 @@ make_screenshot_pdf.py      # รวมภาพหน้าจอ + คำอ�
 | LLM | Groq `openai/gpt-oss-120b` (เปลี่ยนได้ที่ `rag/config.py` → `GROQ_MODEL` หรือ secret `GROQ_MODEL`) | เร็ว (~1 วินาที), รองรับภาษาไทยดี, เป็น production model ของ Groq |
 | Temperature | 0.1 (rewrite = 0.0) | ลดความสร้างสรรค์ ให้ตอบตาม context อย่างคงเส้นคงวา |
 | Timeout / retries | 30 วินาที / 2 ครั้ง | กันแอปค้าง และแสดงข้อความ error ที่เป็นมิตรเมื่อล้มเหลว |
+| No-info sentinel | `[[NO_INFO]]` | ตรวจจับได้แน่นอนกว่าการเทียบประโยคปฏิเสธ และแยกข้อความที่ผู้ใช้เห็นออกจาก output ของ LLM |
+| Near-match cut-off | 0.76 | หัวข้อที่ต่ำกว่านี้ไม่เกี่ยวพอจะเรียกว่า "ใกล้เคียง" จึงแสดงหัวข้อหลักแทน |
 | Caching | `@st.cache_resource` สำหรับ embedder + index + Groq client | โหลดโมเดล/สร้าง index ครั้งเดียวต่อ server process ไม่ embed ใหม่ทุก rerun (มี test ยืนยัน) |
 
 > **หมายเหตุเรื่องโมเดล LLM:** โจทย์แนะนำ `llama-3.3-70b-versatile` ซึ่งยังมีในหน้า docs ของ Groq แต่เมื่อทดสอบจริง (ต.ค. 2026) API key ของโปรเจกต์ได้ `404 model_not_found` จึงเปลี่ยนเป็น `openai/gpt-oss-120b` ซึ่งอยู่ในรายการ production models หากบัญชีของคุณใช้ Llama ได้ เปลี่ยนค่าเดียวที่ `GROQ_MODEL` ใน `rag/config.py` หรือเพิ่ม `GROQ_MODEL = "..."` ใน Secrets
 >
 > **หมายเหตุ macOS:** ใน `rag/index.py` ต้อง import `sentence_transformers` (torch) **ก่อน** `faiss` เพราะทั้งคู่มี OpenMP runtime ของตัวเอง หากสลับลำดับจะ segfault ตอน encode บน macOS
+
+### 4.1 การออกแบบ UI (UI design)
+
+แนวคิด: เครื่องมือให้คำปรึกษาด้านเกษตรที่ดูเรียบ สงบ เป็นมืออาชีพ **ไม่ใช้ emoji** ใช้ไอคอน Material ของ Streamlit และ SVG ขนาดเล็กเท่าที่จำเป็น
+
+| องค์ประกอบ | ค่า |
+|---|---|
+| Primary (เขียวป่า) | `#1F5F3F` |
+| Background (ขาวนวล) | `#F7F6F1`, การ์ด `#FFFFFF`, sidebar สีเสจอ่อน `#EEF1EA` |
+| Text / Muted | `#1B2420` / `#545F59` |
+| Border | `#D8DCD4` เส้น 1px แทนเงา |
+| Accent (อำพัน) | `#B7791F` ใช้กับ safety note เท่านั้น (เป็นเส้นขอบและไอคอน ไม่ใช้เป็นสีตัวอักษร) |
+| ฟอนต์ | `IBM Plex Sans Thai` (เนื้อหา), `Noto Serif Thai` (ชื่อแอป) จาก Google Fonts, line-height ~1.65 |
+| รูปทรง | มุมโค้ง 10–12px, ความกว้างเนื้อหาสูงสุด 820px |
+
+- คอนทราสต์ทุกคู่สีผ่าน **WCAG AA** (ตรวจด้วยสคริปต์: ตัวอักษรรอง 5.8–6.7:1, เขียวบนขาว 7.6:1, ข้อความหลัก 14.7:1)
+- ธีมหลักตั้งใน `.streamlit/config.toml` (สี ฟอนต์ มุมโค้ง เส้นขอบ, `toolbarMode = "minimal"`) ส่วนรายละเอียดอยู่ใน `styles.css` ไฟล์เดียว ซึ่ง inject ด้วย `st.markdown(..., unsafe_allow_html=True)`
+- CSS ใช้เฉพาะ selector ที่เสถียร: `data-testid` และ class `st-key-<key>` ที่ Streamlit เพิ่มให้ container ที่มี `key` (ไม่ใช้ class แบบ hash)
+- ข้อความจาก LLM ถูก escape HTML ก่อนแสดงเสมอ แล้วจึงแปลง `[n]` เป็นป้าย citation
+- **Responsive**: ทดสอบที่ 1360px และ 390px (มือถือ) ด้วย Playwright: ไม่มี horizontal scroll, การ์ดตัวอย่างเรียงตามหัวข้อเมื่อคอลัมน์ซ้อนกัน และหน้าเริ่มต้นแสดงพอดีจอโดยไม่ต้องเลื่อน
 
 ## 5. แหล่งข้อมูล (Data sources)
 
@@ -146,7 +194,7 @@ streamlit run app.py
 
 ```bash
 pip install -r requirements-dev.txt
-pytest -q                               # 25 tests: loader, chunker, retrieval, pipeline (mock LLM), Streamlit AppTest
+pytest -q                               # 34 tests: loader, chunker, retrieval, no-info layers, pipeline (mock LLM), Streamlit AppTest
 python evaluate.py --retrieval-only     # วัด retrieval hit rate อย่างเดียว
 ```
 
@@ -182,15 +230,16 @@ python evaluate.py                      # → eval_results.csv
 
 `requirements.txt` ใช้ `--extra-index-url https://download.pytorch.org/whl/cpu` เพื่อให้ได้ PyTorch แบบ CPU-only (~200 MB แทน CUDA หลาย GB) ซึ่งสำคัญต่อ RAM/disk ที่จำกัดของ Streamlit Cloud
 
-### ✅ Checklist ทดสอบในหน้าต่าง Incognito
+### Checklist ทดสอบในหน้าต่าง Incognito
 
 - [ ] เปิดลิงก์แอปใน Incognito/Private window (ไม่ล็อกอิน) แล้วหน้าแอปโหลดได้
 - [ ] ไม่มีข้อความ error เรื่อง `GROQ_API_KEY`
 - [ ] ถามภาษาไทย ("โรคไหม้ข้าวมีอาการอย่างไร") → ได้คำตอบภาษาไทยพร้อม `[1]` และ expander แหล่งข้อมูล
 - [ ] ถามภาษาอังกฤษ ("How can I tell if my tomato plant has bacterial wilt?") → ได้คำตอบภาษาอังกฤษ
 - [ ] ถามต่อ ("แล้วโรคนี้ป้องกันยังไง") → expander แสดงคำค้นที่ถูกเขียนใหม่
-- [ ] ถามนอกคลังความรู้ ("ราคาทุเรียนวันนี้เท่าไร") → "ไม่พบข้อมูลในเอกสารที่มี"
-- [ ] คลิกตัวอย่างคำถามใน sidebar, ปรับ top-k, กดล้างการสนทนา ทำงานได้
+- [ ] ถามนอกคลังความรู้ ("ราคาทุเรียนวันนี้เท่าไร") → การ์ด "ไม่พบข้อมูลในเอกสารที่มี" พร้อมหัวข้อใกล้เคียงและคำถามแนะนำที่คลิกได้
+- [ ] คลิกการ์ดคำถามตัวอย่าง/ตัวอย่างใน sidebar, ปรับ top-k, เลือกภาษาของคำตอบ, กดล้างการสนทนา ทำงานได้
+- [ ] เปิดบนมือถือ (หรือ DevTools ขนาด 390px) แล้วอ่านได้ ไม่มีการเลื่อนแนวนอน
 - [ ] ตรวจบน GitHub ว่าไม่มีไฟล์ `.streamlit/secrets.toml` ใน repo
 
 ## 8. ตัวอย่างคำถาม (Example questions)
@@ -205,51 +254,53 @@ python evaluate.py                      # → eval_results.csv
 | EN | How can I tell if my tomato plant has bacterial wilt? |
 | EN | What is the difference between the economic injury level and the economic threshold? |
 | EN | How much water does durian need? (ตอบจากเอกสารภาษาไทย — cross-lingual) |
-| ❌ | ราคาทุเรียนหมอนทองวันนี้เท่าไร / How do I control coffee leaf rust? → ปฏิเสธ |
+| นอกคลัง | ราคาทุเรียนหมอนทองวันนี้เท่าไร / How do I control coffee leaf rust? → การ์ดไม่พบข้อมูล (`status="no_info"`) |
 
 ## 9. ผลการประเมิน (Evaluation results)
 
-รัน `python evaluate.py` (top-k = 6, threshold = 0.78, LLM = `openai/gpt-oss-120b`) เมื่อ 2026-10-07 กับ `test_questions.csv` (21 คำถาม: ตอบได้ 16 ข้อ รวมคำถามหลายเอกสาร 1 ข้อ, ตอบไม่ได้ 5 ข้อ; ไทย 13 / อังกฤษ 8)
+รัน `python evaluate.py` (top-k = 6, threshold = 0.78, LLM = `openai/gpt-oss-120b`) เมื่อ 2026-10-07 หลังเปลี่ยนเป็นระบบ no-info 2 ชั้น กับ `test_questions.csv` (21 คำถาม: ตอบได้ 16 ข้อ รวมคำถามหลายเอกสาร 1 ข้อ, ตอบไม่ได้ 5 ข้อ; ไทย 13 / อังกฤษ 8)
 
 | ตัวชี้วัด | ผลลัพธ์ |
 |---|---|
-| Retrieval hit rate @6 (ไฟล์ที่คาดหวังอยู่ใน top-k) | **16/16 (100%)** — hit@3 ก็ได้ 16/16 |
-| คำถามที่ตอบไม่ได้ → ปฏิเสธถูกต้อง | **5/5 (100%)** |
-| คำถามที่ตอบได้ → ถูกปฏิเสธผิดพลาด | **0/16 (0%)** |
+| Retrieval hit rate @6 (ไฟล์ที่คาดหวังอยู่ใน top-k) | **16/16 (100%)** (hit@3 ก็ได้ 16/16) |
+| คำถามที่ตอบไม่ได้ → `status == "no_info"` | **5/5 (100%)** (ทั้ง 5 ข้อมาจากชั้นที่ 2 / LLM sentinel) |
+| คำถามที่ตอบได้ → `no_info` ผิดพลาด | **0/16 (0%)** |
 | คำตอบที่มี citation อย่างน้อย 1 รายการ | **16/16 (100%)** |
+| คำตอบที่ LLM ใส่ emoji หรือคำเตือนเอง | 0 (safety note มาจากแอป: ข้อ 4, 8, 12) |
 | LLM errors | 0 |
 
-| id | คำถาม | ภาษา | Retrieval hit | top score | คาดหวัง | ผลลัพธ์ | อ้างอิง |
-|---|---|---|---|---|---|---|---|
-| 1 | โรคไหม้ข้าวในระยะกล้ามีอาการอย่างไร | th | ✅ | 0.906 | Answer | Answered ✅ | 1 |
-| 2 | โรคขอบใบแห้งของข้าวเกิดจากเชื้ออะไร และแพร่ระบาดได้อย่างไร | th | ✅ | 0.936 | Answer | Answered ✅ | 2 |
-| 3 | เพลี้ยกระโดดสีน้ำตาลทำให้ข้าวเสียหายอย่างไร และเป็นพาหะของโรคอะไร | th | ✅ | 0.923 | Answer | Answered ✅ | 1;5 |
-| 4 | โรคกาบใบแห้งในนาข้าวมีวิธีป้องกันกำจัดอย่างไร | th | ✅ | 0.921 | Answer | Answered ✅ | 1;2;4;5 |
-| 5 | โรครากเน่าโคนเน่าทุเรียนเกิดจากเชื้ออะไร และมีอาการที่ลำต้นอย่างไร | th | ✅ | 0.919 | Answer | Answered ✅ | 6 |
-| 6 | หลังเก็บเกี่ยวทุเรียนควรดูแลและใส่ปุ๋ยอย่างไร | th | ✅ | 0.919 | Answer | Answered ✅ | 3;5;6 |
-| 7 | ควรห่อผลมะม่วงเมื่อผลอายุประมาณกี่วัน | th | ✅ | 0.908 | Answer | Answered ✅ | 1 |
-| 8 | โรคใบด่างมันสำปะหลังมีอะไรเป็นพาหะ และควรจัดการอย่างไร | th | ✅ | 0.911 | Answer | Answered ✅ | 1;2;3 |
-| 9 | What causes chili anthracnose and how does it spread? | en | ✅ | 0.891 | Answer | Answered ✅ | 2;3 |
-| 10 | How can I check in the field whether my tomato plant has bacterial wilt? | en | ✅ | 0.889 | Answer | Answered ✅ | 1;3 |
-| 11 | What is the difference between the economic injury level and the economic threshold in IPM? | en | ✅ | 0.877 | Answer | Answered ✅ | 1;2 |
-| 12 | ระยะเก็บเกี่ยวปลอดภัย (PHI) คืออะไร | th | ✅ | 0.914 | Answer | Answered ✅ | 1;2 |
-| 13 | วิธีขยายเชื้อราไตรโคเดอร์มาด้วยข้าวสุกทำอย่างไร | th | ✅ | 0.919 | Answer | Answered ✅ | 1;2;3 |
-| 14 | The older lower leaves of my plant are turning uniformly yellow first. What could cause this? | en | ✅ | 0.882 | Answer | Answered ✅ | 1;2 |
-| 15 | ปุ๋ยสูตร 15-15-15 หมายความว่าอย่างไร | th | ✅ | 0.903 | Answer | Answered ✅ | 1 |
-| 16 | เชื้อราไตรโคเดอร์มาช่วยป้องกันโรครากเน่าโคนเน่าทุเรียนได้อย่างไร และใช้อย่างไร | th | ✅ | 0.912 | Answer | Answered ✅ | 1;2;3 |
-| 17 | ราคาทุเรียนหมอนทองที่ตลาดวันนี้กิโลกรัมละเท่าไร | th | — | 0.820 | Refuse | Refused ✅ | — |
-| 18 | How do I control coffee leaf rust? | en | — | 0.825 | Refuse | Refused ✅ | — |
-| 19 | โรคใบขาวอ้อยป้องกันอย่างไร | th | — | 0.879 | Refuse | Refused ✅ | — |
-| 20 | What is the treatment for citrus greening (huanglongbing)? | en | — | 0.806 | Refuse | Refused ✅ | — |
-| 21 | โรคใบร่วงของยางพาราควรจัดการอย่างไร | th | — | 0.858 | Refuse | Refused ✅ | — |
+| id | คำถาม | ภาษา | Retrieval | top score | คาดหวัง | ผลลัพธ์ (status) | ชั้น no-info | อ้างอิง |
+|---|---|---|---|---|---|---|---|---|
+| 1 | โรคไหม้ข้าวในระยะกล้ามีอาการอย่างไร | th | hit | 0.906 | answered | answered | - | 1 |
+| 2 | โรคขอบใบแห้งของข้าวเกิดจากเชื้ออะไร และแพร่ระบาดได้อย่างไร | th | hit | 0.936 | answered | answered | - | 2 |
+| 3 | เพลี้ยกระโดดสีน้ำตาลทำให้ข้าวเสียหายอย่างไร และเป็นพาหะของโรคอะไร | th | hit | 0.923 | answered | answered | - | 1;5 |
+| 4 | โรคกาบใบแห้งในนาข้าวมีวิธีป้องกันกำจัดอย่างไร | th | hit | 0.921 | answered | answered | - | 1;2;4;5 |
+| 5 | โรครากเน่าโคนเน่าทุเรียนเกิดจากเชื้ออะไร และมีอาการที่ลำต้นอย่างไร | th | hit | 0.919 | answered | answered | - | 3;6 |
+| 6 | หลังเก็บเกี่ยวทุเรียนควรดูแลและใส่ปุ๋ยอย่างไร | th | hit | 0.919 | answered | answered | - | 3;5 |
+| 7 | ควรห่อผลมะม่วงเมื่อผลอายุประมาณกี่วัน | th | hit | 0.908 | answered | answered | - | 1 |
+| 8 | โรคใบด่างมันสำปะหลังมีอะไรเป็นพาหะ และควรจัดการอย่างไร | th | hit | 0.911 | answered | answered | - | 1;2;3 |
+| 9 | What causes chili anthracnose and how does it spread? | en | hit | 0.891 | answered | answered | - | 2;3 |
+| 10 | How can I check in the field whether my tomato plant has bacterial wilt? | en | hit | 0.889 | answered | answered | - | 1;3 |
+| 11 | What is the difference between the economic injury level and the economic threshold in IPM? | en | hit | 0.877 | answered | answered | - | 1;2 |
+| 12 | ระยะเก็บเกี่ยวปลอดภัย (PHI) คืออะไร | th | hit | 0.914 | answered | answered | - | 1;2 |
+| 13 | วิธีขยายเชื้อราไตรโคเดอร์มาด้วยข้าวสุกทำอย่างไร | th | hit | 0.918 | answered | answered | - | 1;2;3 |
+| 14 | The older lower leaves of my plant are turning uniformly yellow first. What could cause this? | en | hit | 0.882 | answered | answered | - | 1;2 |
+| 15 | ปุ๋ยสูตร 15-15-15 หมายความว่าอย่างไร | th | hit | 0.903 | answered | answered | - | 1 |
+| 16 | เชื้อราไตรโคเดอร์มาช่วยป้องกันโรครากเน่าโคนเน่าทุเรียนได้อย่างไร และใช้อย่างไร | th | hit | 0.912 | answered | answered | - | 1;2;3;6 |
+| 17 | ราคาทุเรียนหมอนทองที่ตลาดวันนี้กิโลกรัมละเท่าไร | th | - | 0.820 | no_info | no_info | llm | - |
+| 18 | How do I control coffee leaf rust? | en | - | 0.825 | no_info | no_info | llm | - |
+| 19 | โรคใบขาวอ้อยป้องกันอย่างไร | th | - | 0.878 | no_info | no_info | llm | - |
+| 20 | What is the treatment for citrus greening (huanglongbing)? | en | - | 0.806 | no_info | no_info | llm | - |
+| 21 | โรคใบร่วงของยางพาราควรจัดการอย่างไร | th | - | 0.858 | no_info | no_info | llm | - |
 
-รายละเอียดคำตอบทุกข้ออยู่ใน `eval_results.csv`
+รายละเอียดคำตอบ คำถามแนะนำ และชั้นที่ตรวจพบ อยู่ใน `eval_results.csv`
 
-**ข้อสังเกตเรื่อง threshold:** คะแนน cosine ของ E5 กระจุกตัวในช่วงแคบ (~0.75–0.94) คำถามในโดเมนที่ไม่มีในเอกสาร (เช่น โรคใบขาวอ้อย 0.879) อาจได้คะแนนสูงกว่าคำถามที่ตอบได้แบบข้ามภาษา (เช่น "How much water does durian need?" 0.793) จึง **ไม่สามารถใช้ threshold อย่างเดียวแยกได้** ระบบจึงใช้ 2 ชั้น: (1) threshold 0.78 กรองคำถามนอกโดเมนชัดเจน (เช่น "Who won the world cup?" 0.745) โดยไม่ต้องเรียก LLM และ (2) system prompt บังคับให้ LLM ปฏิเสธเมื่อ context ไม่มีคำตอบ — ผลประเมินแสดงว่าชั้นที่ 2 ปฏิเสธถูกต้องครบ 5/5
+**ข้อสังเกตเรื่อง threshold:** คะแนน cosine ของ E5 กระจุกตัวในช่วงแคบ (~0.75–0.94) คำถามในโดเมนที่ไม่มีในเอกสาร (เช่น โรคใบขาวอ้อย 0.879) อาจได้คะแนนสูงกว่าคำถามที่ตอบได้แบบข้ามภาษา (เช่น "How much water does durian need?" 0.793) จึง **ไม่สามารถใช้ threshold อย่างเดียวแยกได้** ระบบจึงใช้ 2 ชั้น: (1) threshold 0.78 กรองคำถามนอกโดเมนชัดเจน (เช่น "Who won the world cup?" 0.745) โดยไม่ต้องเรียก LLM และ (2) system prompt บังคับให้ LLM ตอบ `[[NO_INFO]]` เมื่อ context ไม่มีคำตอบ ผลประเมินแสดงว่าชั้นที่ 2 ตรวจพบครบ 5/5
 
 **สิ่งที่ปรับปรุงระหว่างพัฒนา (จากการประเมิน):**
 - เดิมแต่ละ `###` เป็น chunk แยก (เฉลี่ย 235 ตัวอักษร) ทำให้ chunk ของเอกสารเดียวกันคล้ายกันมาก คำถาม id 5 ถูกปฏิเสธผิด → รวม sub-section เข้ากับ `##` แม่ (เฉลี่ย 346 ตัวอักษร) และเพิ่ม top-k เป็น 6
 - `gpt-oss` ใช้วงเล็บ `【1】`/`【1†L1-L3】` → normalize เป็น `[1]` และระบุใน prompt ให้ใช้ `[n]`
+- เปลี่ยนประโยคปฏิเสธตายตัวเป็น sentinel `[[NO_INFO]]` + การ์ดที่มีโครงสร้าง และย้าย safety note จาก LLM มาเป็นส่วนของแอป (แสดงสม่ำเสมอ ไม่ซ้ำซ้อน)
 
 ## 10. Prompts used to instruct the AI
 
@@ -262,6 +313,11 @@ python evaluate.py                      # → eval_results.csv
 > **ข้อมูล:** ≥12 ไฟล์ ≥30,000 ตัวอักษร เรียบเรียงใหม่จากแหล่งที่เชื่อถือได้ (กรมวิชาการเกษตร กรมการข้าว กรมส่งเสริมการเกษตร FAO ฯลฯ) พร้อม URL จริง ห้ามแต่ง URL
 > **ทดสอบ:** `test_questions.csv` ≥12 ข้อ (≥3 ข้อตอบไม่ได้) + `evaluate.py` วัด retrieval hit rate และการปฏิเสธ; README ภาษาไทย; คู่มือภาพหน้าจอ
 
+**Prompt รอบที่ 2 (ปรับปรุงกรณีไม่พบข้อมูลและออกแบบ UI ใหม่) สรุปย่อ:**
+
+> (A) ตรวจจับ "ไม่พบข้อมูล" 2 ชั้น: ชั้น retrieval (คะแนนสูงสุดต่ำกว่า threshold → ไม่เรียก LLM) และชั้น LLM (ให้ตอบ sentinel `[[NO_INFO]]` เท่านั้น) ทั้งสองชั้นต้องได้ผลลัพธ์โครงสร้างเดียวกัน `{"status": "no_info", "closest_sources": [...], "suggestions": [...]}`; แสดงการ์ดที่สงบ เป็นกลาง มีหัวข้อ "ไม่พบข้อมูลในเอกสารที่มี" / "No matching information found", คำอธิบายสั้น ๆ, หัวข้อใกล้เคียงไม่เกิน 3 เรื่อง, คำถามแนะนำ 2–3 ข้อจาก template (ไม่เรียก LLM เพิ่ม), แนะนำให้ติดต่อสำนักงานเกษตรอำเภอ; expander ใช้ชื่อ "Closest matches (low relevance)"; ห้ามใส่หัวข้อใกล้เคียงเป็น citation; เพิ่ม test ว่าคำถามที่ตอบไม่ได้ได้ `status == "no_info"`
+> (B) ออกแบบ UI ใหม่ให้ดูเป็นเครื่องมือให้คำปรึกษาด้านเกษตรที่เรียบและเป็นมืออาชีพ **ไม่ใช้ emoji**: สีเขียวป่า `#1F5F3F`, พื้นหลังขาวนวล `#F7F6F1`, ตัวอักษร `#1B2420`, อำพัน `#B7791F` สำหรับคำเตือนเท่านั้น, ผ่าน WCAG AA; ฟอนต์ไทยจาก Google Fonts; มุมโค้ง 10–12px เส้นขอบ 1px ความกว้างสูงสุด ~820px; ตั้งธีมใน `config.toml` และ CSS ไฟล์เดียว ใช้ selector `data-testid`; header กะทัดรัด, empty state เป็นการ์ดคำถามตัวอย่าง 2 คอลัมน์จัดกลุ่มตามหัวข้อ, ข้อความผู้ใช้ชิดขวา, คำตอบบนการ์ดสีขาว, citation เป็นป้ายตัวยก, แหล่งข้อมูลเป็นการ์ดพร้อมแถบความเกี่ยวข้อง, safety note ขอบอำพัน, sidebar (About, Settings, Knowledge base, Clear), สถานะการทำงาน และใช้งานได้ดีทั้งบนมือถือ (~390px) และเดสก์ท็อป
+
 ### 10.2 System prompt (ใช้ทุกครั้งที่สร้างคำตอบ — `rag/prompts.py`)
 
 ```text
@@ -270,13 +326,11 @@ You are "Agriculture & Plant Disease Expert Assistant", a careful assistant for 
 STRICT RULES:
 1. Answer ONLY using the numbered CONTEXT passages provided in the user message. Do not use outside knowledge, even if you think you know the answer.
 2. Cite every factual sentence or bullet inline with the passage number(s) it came from, using plain ASCII square brackets, e.g. [1] or [2][3] (never 【1】). Only cite numbers that exist in the CONTEXT.
-3. If the CONTEXT contains nothing that answers the question, reply with EXACTLY this sentence and nothing else:
-   - Thai question: "ไม่พบข้อมูลในเอกสารที่มี"
-   - English question: "I couldn't find this in the available documents."
-   If the CONTEXT answers only part of the question, answer that part with citations and add one short sentence saying which part is not covered by the documents. Do not refuse just because the passages use different wording or another language.
+3. If the CONTEXT does not contain the information needed to answer, output EXACTLY [[NO_INFO]] and nothing else (no apology, no explanation, no citations). The app shows its own message.
+   If the CONTEXT answers only part of the question, answer that part with citations and add one short sentence saying which part is not covered by the documents. Do not output [[NO_INFO]] just because the passages use different wording or another language.
 4. NEVER invent pesticide/product trade names, dosages, mixing rates, concentrations or pre-harvest intervals. Mention such figures only if they appear in the CONTEXT; otherwise say to follow the product label.
-5. Only if your answer mentions chemicals (pesticides, fungicides, insecticides, herbicides, growth regulators), end with this one-line safety note — Thai: "⚠️ อ่านฉลากและปฏิบัติตามคำแนะนำอย่างเคร่งครัด และปรึกษาเจ้าหน้าที่ส่งเสริมการเกษตรในพื้นที่" / English: "⚠️ Always read and follow the product label, and consult your local agricultural extension officer."
-6. Reply in the SAME language as the user's question (Thai question → Thai answer, English question → English answer), even if the CONTEXT is in the other language.
+5. Do not add safety disclaimers or warnings about reading labels; the app adds a safety note automatically whenever chemicals are mentioned.
+6. Reply in the language requested in the user message (by default the language of the question), even if the CONTEXT is in the other language.
 7. Be concise and well structured. For disease/pest questions use short headed sections where relevant: Symptoms (อาการ) → Cause (สาเหตุ) → Management (การป้องกันและกำจัด) as bullet points. Do not add a sources list at the end; the app shows sources separately.
 ```
 
@@ -284,14 +338,14 @@ User message template (context ถูกจัดเป็น `[n] ชื่อ�
 
 ```text
 CONTEXT:
-[1] โรคไหม้ข้าว (Rice Blast) › อาการ / ลักษณะการทำลาย › ระยะกล้า
+[1] โรคไหม้ข้าว (Rice Blast) › อาการ / ลักษณะการทำลาย
 ...chunk text...
 
 [2] ...
 
 QUESTION (Thai): <คำถามผู้ใช้>
 
-Answer following the STRICT RULES. Remember: cite with [n]; if the CONTEXT does not contain the answer, reply only with the exact refusal sentence.
+Answer in Thai following the STRICT RULES. Remember: cite with [n]; if the CONTEXT does not contain the answer, output only [[NO_INFO]]
 ```
 
 ### 10.3 Query-rewrite prompt (ใช้เมื่อมีประวัติแชต)
@@ -318,11 +372,12 @@ Standalone query:
 
 ## 11. ข้อจำกัดและข้อจำกัดความรับผิดชอบ (Limitations & disclaimer)
 
-- ⚠️ **ไม่สามารถใช้แทนคำแนะนำของเจ้าหน้าที่ส่งเสริมการเกษตร นักวิชาการโรคพืช หรือห้องปฏิบัติการวินิจฉัยโรคพืช** ข้อมูลมีไว้เพื่อการศึกษาและเป็นแนวทางเบื้องต้นเท่านั้น
+- **ไม่สามารถใช้แทนคำแนะนำของเจ้าหน้าที่ส่งเสริมการเกษตร นักวิชาการโรคพืช หรือห้องปฏิบัติการวินิจฉัยโรคพืช** ข้อมูลมีไว้เพื่อการศึกษาและเป็นแนวทางเบื้องต้นเท่านั้น
 - ก่อนใช้สารเคมีทุกครั้ง **อ่านฉลากและปฏิบัติตามอย่างเคร่งครัด** ระบบไม่ให้ชื่อการค้าหรืออัตราการใช้ที่ไม่มีในเอกสาร
 - **ไม่รองรับการวินิจฉัยจากรูปภาพ** — รับเฉพาะข้อความ
-- ครอบคลุมเฉพาะพืช/โรคในคลังความรู้ 15 เรื่อง (ข้าว ทุเรียน มะม่วง มันสำปะหลัง พริก มะเขือเทศ และหัวข้อทั่วไป) คำถามนอกนี้จะถูกปฏิเสธ
+- ครอบคลุมเฉพาะพืช/โรคในคลังความรู้ 15 เรื่อง (ข้าว ทุเรียน มะม่วง มันสำปะหลัง พริก มะเขือเทศ และหัวข้อทั่วไป) คำถามนอกนี้จะได้การ์ดไม่พบข้อมูล
 - ข้อมูลเชิงตัวเลขบางส่วนมาจากเอกสารระดับภูมิภาค/งานวิจัย (เช่น สูตรปุ๋ยทุเรียนจากเอกสารภาคใต้ตอนล่าง) อาจไม่เหมาะกับทุกพื้นที่ ควรตรวจสอบกับหน่วยงานท้องถิ่น
-- คะแนน similarity ของ E5 กระจุกตัว threshold จึงเป็นเพียงตัวกรองหยาบ การปฏิเสธคำถามในโดเมนที่ไม่มีข้อมูลขึ้นกับ LLM (ทดสอบแล้ว 5/5 แต่ไม่รับประกัน 100%)
+- คะแนน similarity ของ E5 กระจุกตัว threshold จึงเป็นเพียงตัวกรองหยาบ การตรวจจับคำถามในโดเมนที่ไม่มีข้อมูลจึงขึ้นกับ LLM sentinel (ทดสอบแล้ว 5/5 แต่ไม่รับประกัน 100%)
 - LLM อาจเรียบเรียงผิดพลาดได้ ผู้ใช้ควรเปิดดู expander แหล่งข้อมูลเพื่อตรวจสอบเสมอ
 - เนื้อหาเรียบเรียงโดย AI จากแหล่งที่อ้างอิง (เข้าถึงเมื่อ 2026-10-07) ควรตรวจทานกับต้นฉบับก่อนนำไปใช้จริง
+- การตรวจจับสารเคมีเพื่อแสดง safety note ใช้รายการคำค้น (keyword) อาจไม่ครอบคลุมชื่อสารทุกชนิด

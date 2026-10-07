@@ -1,4 +1,8 @@
 title: โรครากเน่าโคนเน่าทุเรียน (Durian Phytophthora Root Rot and Foot Rot)
+topic_th: โรครากเน่าโคนเน่าทุเรียน
+topic_en: durian Phytophthora root and foot rot
+category: durian
+kind: disease
 source_name: กรมวิชาการเกษตร; กรมส่งเสริมการเกษตร; ศูนย์ติดตามและแก้ไขปัญหาภัยพิบัติด้านการเกษตร กระทรวงเกษตรและสหกรณ์
 source_url: https://www.opsmoac.go.th/yala-warning-files-432891791796; https://www.doa.go.th/share/attachment.php?aid=2968
 date_accessed: 2026-10-07

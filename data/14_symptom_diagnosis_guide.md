@@ -1,4 +1,8 @@
 title: Plant Symptom Diagnosis Guide: From Symptom to Likely Cause
+topic_th: การวินิจฉัยอาการผิดปกติของพืช
+topic_en: plant symptom diagnosis
+category: general
+kind: practice
 source_name: Penn State Extension; UF/IFAS Extension; Oklahoma State University Extension; Department of Agricultural Extension Thailand (DOAE)
 source_url: https://extension.psu.edu/solving-the-case-of-crop-disorders-the-role-of-patterns-in-diagnosis; https://esc.doae.go.th/17-%E0%B8%98%E0%B8%B2%E0%B8%95%E0%B8%B8%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B8%8A/
 date_accessed: 2026-10-07

@@ -56,6 +56,15 @@ LLM_MAX_RETRIES: int = 2
 # Number of previous chat turns (user+assistant pairs) given to the rewriter.
 REWRITE_HISTORY_TURNS: int = 3
 
-# --- Fixed refusal messages -----------------------------------------------
+# --- "No information" handling --------------------------------------------
+# The LLM outputs exactly this sentinel when the context lacks the answer; the
+# app turns it (and below-threshold retrieval) into a structured no-info result.
+NO_INFO_SENTINEL: str = "[[NO_INFO]]"
+# Headlines of the no-answer card (also stored as the message text).
 REFUSAL_TH: str = "ไม่พบข้อมูลในเอกสารที่มี"
-REFUSAL_EN: str = "I couldn't find this in the available documents."
+REFUSAL_EN: str = "No matching information found"
+# Below-threshold chunks scoring at least this are still shown as "closest
+# topics"; lower than this the card lists the main covered topics instead.
+NEAR_MATCH_MIN_SCORE: float = 0.76
+MAX_CLOSEST_TOPICS: int = 3
+NUM_SUGGESTIONS: int = 3

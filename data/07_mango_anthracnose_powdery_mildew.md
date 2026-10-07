@@ -1,4 +1,8 @@
 title: โรคแอนแทรคโนสและโรคราแป้งในมะม่วง (Mango Anthracnose and Powdery Mildew)
+topic_th: โรคแอนแทรคโนสและโรคราแป้งมะม่วง
+topic_en: mango anthracnose and powdery mildew
+category: mango
+kind: disease
 source_name: กรมวิชาการเกษตร (คณะทำงานพยากรณ์และเตือนภัยศัตรูพืช); สำนักงานเกษตรและสหกรณ์จังหวัดชุมพร; กรมวิชาการเกษตร (เอกสารศัตรูที่สำคัญของมะม่วง)
 source_url: https://www.opsmoac.go.th/chumphon-warning-files-431891791867; https://doa.go.th/share/attachment.php?aid=2787
 date_accessed: 2026-10-07

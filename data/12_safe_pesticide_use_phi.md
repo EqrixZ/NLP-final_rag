@@ -1,4 +1,8 @@
 title: การใช้สารเคมีป้องกันกำจัดศัตรูพืชอย่างปลอดภัยและระยะเก็บเกี่ยวปลอดภัย
+topic_th: การใช้สารเคมีเกษตรอย่างปลอดภัย
+topic_en: safe pesticide use
+category: general
+kind: practice
 source_name: กระทรวงเกษตรและสหกรณ์ (ประกาศเรื่องฉลากและระดับความเป็นพิษของวัตถุอันตราย พ.ศ. 2538); กรมวิชาการเกษตร; กรมส่งเสริมการเกษตร; Penn State Extension
 source_url: https://www.doa.go.th/ard/wp-content/uploads/2024/07/%E0%B8%9B%E0%B8%81.%E0%B8%81%E0%B8%A9-1.-%E0%B8%89%E0%B8%A5%E0%B8%B2%E0%B8%81-%E0%B8%9E.%E0%B8%A8.-2538-1.pdf; https://doaenews.doae.go.th/archives/32198
 date_accessed: 2026-10-07

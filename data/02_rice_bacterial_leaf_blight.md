@@ -1,4 +1,8 @@
 title: โรคขอบใบแห้ง (Bacterial Leaf Blight)
+topic_th: โรคขอบใบแห้งของข้าว
+topic_en: rice bacterial leaf blight
+category: rice
+kind: disease
 source_name: กรมการข้าว (องค์ความรู้เรื่องข้าว Rice Knowledge Bank); International Rice Research Institute (IRRI Rice Knowledge Bank)
 source_url: https://rkb.ricethailand.go.th/web/content_page.php?code=2L33OEI25IVZ1V788VRJ3LP8DH678; http://www.knowledgebank.irri.org/training/fact-sheets/pest-management/diseases/item/bacterial-blight
 date_accessed: 2026-10-07

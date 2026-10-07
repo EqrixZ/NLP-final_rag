@@ -1,4 +1,8 @@
 title: การจัดการปุ๋ยและน้ำในสวนทุเรียน (Durian Fertilizer and Water Management)
+topic_th: การจัดการปุ๋ยและน้ำในสวนทุเรียน
+topic_en: durian fertilizer and water management
+category: durian
+kind: practice
 source_name: กรมวิชาการเกษตร (เอกสารการปลูกทุเรียน); กรมวิชาการเกษตร (รายงานการทดสอบการใช้ปุ๋ยทุเรียน จ.อุตรดิตถ์)
 source_url: https://www.doa.go.th/share/attachment.php?aid=2973; https://www.doa.go.th/plan/wp-content/uploads/2021/05/416.1การทดสอบการเพิ่มประสิทธิภาพการผลิตทุเรียน-โดยการใช้ปุ๋ย.pdf
 date_accessed: 2026-10-07

@@ -1,4 +1,8 @@
 title: โรคไหม้ข้าว (Rice Blast)
+topic_th: โรคไหม้ข้าว
+topic_en: rice blast
+category: rice
+kind: disease
 source_name: กรมการข้าว (องค์ความรู้เรื่องข้าว Rice Knowledge Bank); International Rice Research Institute (IRRI Rice Knowledge Bank)
 source_url: https://rkb.ricethailand.go.th/web/content_page.php?code=RKUZ3Y85CVWXMTTXWNLNIZW8MWYCO; http://www.knowledgebank.irri.org/training/fact-sheets/pest-management/diseases/item/blast-leaf-collar
 date_accessed: 2026-10-07

@@ -1,4 +1,8 @@
 title: Integrated Pest Management (IPM) Principles
+topic_th: การจัดการศัตรูพืชแบบผสมผสาน (IPM)
+topic_en: integrated pest management (IPM)
+category: general
+kind: practice
 source_name: University of California Statewide IPM Program (UC IPM); FAO Regional Office for Asia and the Pacific; Insecticide Resistance Action Committee (IRAC); Fungicide Resistance Action Committee (FRAC)
 source_url: https://ipm.ucanr.edu/what-is-ipm/; https://www.fao.org/4/ac834e/ac834e04.htm
 date_accessed: 2026-10-07

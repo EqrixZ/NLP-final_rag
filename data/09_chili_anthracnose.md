@@ -1,4 +1,8 @@
 title: Chili Anthracnose (โรคแอนแทรคโนสพริก / โรคกุ้งแห้ง)
+topic_th: โรคแอนแทรคโนสพริก
+topic_en: chili anthracnose
+category: vegetables
+kind: disease
 source_name: Pacific Pests, Pathogens and Weeds (Lucid Central / ACIAR); Department of Agricultural Extension, Thailand (กรมส่งเสริมการเกษตร)
 source_url: https://apps.lucidcentral.org/ppp/text/web_full/entities/capsicum_chilli_anthracnose_177.htm; https://www.doae.go.th/%E0%B9%81%E0%B8%AD%E0%B8%99%E0%B9%81%E0%B8%97%E0%B8%A3%E0%B8%84%E0%B9%82%E0%B8%99%E0%B8%AA%E0%B8%9E%E0%B8%A3%E0%B8%B4%E0%B8%81-%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B8%A3/
 date_accessed: 2026-10-07

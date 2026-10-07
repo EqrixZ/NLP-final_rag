@@ -4,8 +4,8 @@ Runs every question through the SAME retrieval + generation code as the app
 (``rag.pipeline``) and reports:
 
 * retrieval hit rate — did the expected source file appear in the top-k?
-* refusal accuracy  — do unanswerable questions get the fixed refusal?
-* false refusals    — do answerable questions get refused?
+* no-info accuracy  — do unanswerable questions yield ``status == "no_info"``?
+* false no-info     — do answerable questions get ``status == "no_info"``?
 
 Usage::
 
@@ -84,8 +84,8 @@ def main() -> int:
             print(f"[{q['id']}] LLM error: {exc}", file=sys.stderr)
             continue
 
-        refused = result.refused
-        # Without an LLM, refusal is only known when the threshold rejected every chunk.
+        refused = result.status == "no_info"
+        # Without an LLM, no-info is only known when the threshold rejected every chunk (layer 1).
         measured = llm is not None or not result.sources
         row = {
             "id": q["id"],
@@ -97,17 +97,20 @@ def main() -> int:
             "top_score": round(raw_hits[0].score, 4) if raw_hits else "",
             "retrieval_hit": hit,
             "chunks_above_threshold": len(result.sources),
+            "status": result.status if measured else "",
+            "no_info_layer": ("retrieval" if not result.sources else "llm") if measured and refused else "",
             "refused": refused if measured else "",
             "refusal_correct": refused if measured and not answerable else "",
             "false_refusal": refused if measured and answerable else "",
             "cited": ";".join(str(n) for n in sorted(result.cited_ranks)),
             "rewritten_query": result.rewritten_query,
+            "suggestions": " | ".join(result.suggestions),
             "answer": result.answer if measured else "",
             "error": result.error or "",
         }
         rows.append(row)
         status = "HIT " if hit else ("MISS" if hit is False else "N/A ")
-        print(f"[{q['id']:>3}] {status} top={row['top_score']} refused={row['refused']!s:<5} {q['question'][:60]}")
+        print(f"[{q['id']:>3}] {status} top={row['top_score']} status={row['status'] or '-':<8} {q['question'][:60]}")
         if llm:
             time.sleep(args.delay)
 
@@ -125,14 +128,14 @@ def main() -> int:
         correct_refusals = sum(1 for r in unanswerable_rows if r["refusal_correct"] is True)
         false_refusals = sum(1 for r in answerable_rows if r["false_refusal"] is True)
         errors = sum(1 for r in rows if r["error"])
-        print(f"Unanswerable correctly refused:        {pct(correct_refusals, len(unanswerable_rows))}")
-        print(f"Answerable wrongly refused:            {pct(false_refusals, len(answerable_rows))}")
+        print(f"Unanswerable -> status == no_info:     {pct(correct_refusals, len(unanswerable_rows))}")
+        print(f"Answerable wrongly -> no_info:         {pct(false_refusals, len(answerable_rows))}")
         print(f"Answers with >=1 citation:             {pct(sum(1 for r in answerable_rows if r['cited']), len(answerable_rows))}")
         print(f"LLM errors:                            {errors}")
     else:
         threshold_refusals = sum(1 for r in unanswerable_rows if r["chunks_above_threshold"] == 0)
-        print(f"Unanswerable refused by threshold alone: {pct(threshold_refusals, len(unanswerable_rows))}")
-        print("(LLM-based refusal not measured: run without --retrieval-only and with GROQ_API_KEY set.)")
+        print(f"Unanswerable -> no_info by threshold alone (layer 1): {pct(threshold_refusals, len(unanswerable_rows))}")
+        print("(Layer-2 / LLM no-info not measured: run without --retrieval-only and with GROQ_API_KEY set.)")
     print(f"\nSaved per-question results to {args.out}")
     return 0
 

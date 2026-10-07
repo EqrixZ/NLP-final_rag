@@ -17,6 +17,7 @@ import faiss  # isort: skip
 import numpy as np
 
 from rag.chunker import Chunk
+from rag.loader import Document
 from rag.config import EMBED_BATCH_SIZE, EMBEDDING_MODEL_NAME, QUERY_PREFIX
 
 
@@ -37,11 +38,17 @@ def load_embedder(model_name: str = EMBEDDING_MODEL_NAME) -> SentenceTransformer
 class VectorIndex:
     """FAISS inner-product index over chunk embeddings."""
 
-    def __init__(self, embedder: SentenceTransformer, chunks: list[Chunk]) -> None:
+    def __init__(
+        self,
+        embedder: SentenceTransformer,
+        chunks: list[Chunk],
+        documents: list[Document] | None = None,
+    ) -> None:
         if not chunks:
             raise ValueError("Cannot build an index with no chunks.")
         self.embedder = embedder
         self.chunks = chunks
+        self.documents = documents or []  # source documents (topic catalog, sidebar)
         vectors = self._encode([c.embedding_text() for c in chunks])
         self.index = faiss.IndexFlatIP(vectors.shape[1])
         self.index.add(vectors)

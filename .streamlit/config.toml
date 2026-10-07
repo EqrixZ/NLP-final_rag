@@ -1,9 +1,23 @@
 [theme]
 base = "light"
-primaryColor = "#2E7D32"
-backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#F1F8E9"
-textColor = "#1B2A1B"
+primaryColor = "#1F5F3F"
+backgroundColor = "#F7F6F1"
+secondaryBackgroundColor = "#EEF1EA"
+textColor = "#1B2420"
+linkColor = "#1F5F3F"
+borderColor = "#D8DCD4"
+baseRadius = "10px"
+showSidebarBorder = true
+font = "IBM Plex Sans Thai:https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap"
+headingFont = "Noto Serif Thai:https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@500;600&display=swap"
+
+[theme.sidebar]
+backgroundColor = "#EEF1EA"
+secondaryBackgroundColor = "#FFFFFF"
+
+[client]
+# Keep the main menu (rerun, settings) but hide developer-only options.
+toolbarMode = "minimal"
 
 [server]
 headless = true

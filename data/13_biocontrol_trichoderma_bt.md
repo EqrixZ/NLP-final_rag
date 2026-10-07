@@ -1,4 +1,8 @@
 title: ชีวภัณฑ์ควบคุมศัตรูพืช: ไตรโคเดอร์มา บีที บิวเวอเรีย เมตาไรเซียม และบาซิลลัส ซับทิลิส
+topic_th: การใช้ชีวภัณฑ์ไตรโคเดอร์มาและบีที
+topic_en: biological control with Trichoderma and Bt
+category: general
+kind: practice
 source_name: กรมส่งเสริมการเกษตร (คู่มือการผลิตขยายเชื้อจุลินทรีย์ควบคุมศัตรูพืชสำหรับศูนย์จัดการศัตรูพืชชุมชน); กรมวิชาการเกษตร; UConn Home & Garden Education Center
 source_url: https://secreta.doae.go.th/?p=6961; https://homegarden.cahnr.uconn.edu/factsheets/bacillus-thuringiensis
 date_accessed: 2026-10-07

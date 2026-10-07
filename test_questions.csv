@@ -15,8 +15,8 @@
 14,The older lower leaves of my plant are turning uniformly yellow first. What could cause this?,"Likely nitrogen deficiency (mobile nutrient, shows on older leaves first).",en,14_symptom_diagnosis_guide.md,True
 15,ปุ๋ยสูตร 15-15-15 หมายความว่าอย่างไร,ปุ๋ย 100 กก. มีไนโตรเจน (N) 15 กก. ฟอสฟอรัส (P2O5) 15 กก. และโพแทสเซียม (K2O) 15 กก.,th,15_soil_fertilizer_basics.md,True
 16,เชื้อราไตรโคเดอร์มาช่วยป้องกันโรครากเน่าโคนเน่าทุเรียนได้อย่างไร และใช้อย่างไร,เป็นเชื้อราปฏิปักษ์ต่อเชื้อในดินรวมถึงไฟท็อปธอรา ใช้ผสมรำข้าวและปุ๋ยคอก 1:4:10 โรยในรัศมีทรงพุ่มหรือรองก้นหลุม (multi-document),th,05_durian_phytophthora.md;13_biocontrol_trichoderma_bt.md,True
-17,ราคาทุเรียนหมอนทองที่ตลาดวันนี้กิโลกรัมละเท่าไร,ไม่พบข้อมูลในเอกสารที่มี,th,,False
-18,How do I control coffee leaf rust?,I couldn't find this in the available documents.,en,,False
-19,โรคใบขาวอ้อยป้องกันอย่างไร,ไม่พบข้อมูลในเอกสารที่มี,th,,False
-20,What is the treatment for citrus greening (huanglongbing)?,I couldn't find this in the available documents.,en,,False
-21,โรคใบร่วงของยางพาราควรจัดการอย่างไร,ไม่พบข้อมูลในเอกสารที่มี,th,,False
+17,ราคาทุเรียนหมอนทองที่ตลาดวันนี้กิโลกรัมละเท่าไร,"status=""no_info"" — card: ""ไม่พบข้อมูลในเอกสารที่มี""",th,,False
+18,How do I control coffee leaf rust?,"status=""no_info"" — card: ""No matching information found""",en,,False
+19,โรคใบขาวอ้อยป้องกันอย่างไร,"status=""no_info"" — card: ""ไม่พบข้อมูลในเอกสารที่มี""",th,,False
+20,What is the treatment for citrus greening (huanglongbing)?,"status=""no_info"" — card: ""No matching information found""",en,,False
+21,โรคใบร่วงของยางพาราควรจัดการอย่างไร,"status=""no_info"" — card: ""ไม่พบข้อมูลในเอกสารที่มี""",th,,False

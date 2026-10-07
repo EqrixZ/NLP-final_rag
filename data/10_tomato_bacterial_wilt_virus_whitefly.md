@@ -1,4 +1,8 @@
 title: Tomato and Solanaceous Vegetables: Bacterial Wilt, Leaf Curl Virus, Whitefly and Thrips
+topic_th: โรคเหี่ยวเขียวมะเขือเทศ
+topic_en: tomato bacterial wilt
+category: vegetables
+kind: disease
 source_name: Oklahoma State University Extension; University of Arkansas Cooperative Extension; UF/IFAS Extension (EDIS); World Vegetable Center; Department of Agriculture Thailand (DOA)
 source_url: https://www.uaex.uada.edu/yard-garden/plant-health-clinic/disease-notes/posts/disease-note-17.aspx; https://ask.ifas.ufl.edu/publication/IN1430
 date_accessed: 2026-10-07

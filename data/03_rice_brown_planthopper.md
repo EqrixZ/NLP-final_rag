@@ -1,4 +1,8 @@
 title: เพลี้ยกระโดดสีน้ำตาล (Brown Planthopper)
+topic_th: เพลี้ยกระโดดสีน้ำตาล
+topic_en: brown planthopper
+category: rice
+kind: pest
 source_name: กรมการข้าว (องค์ความรู้เรื่องข้าว Rice Knowledge Bank); International Rice Research Institute (IRRI Rice Knowledge Bank)
 source_url: https://rkb.ricethailand.go.th/web/content_page.php?code=IKC4N6RDUNUIBWGU4MR107J9ZQSBW; http://www.knowledgebank.irri.org/training/fact-sheets/pest-management/insects/item/planthopper
 date_accessed: 2026-10-07

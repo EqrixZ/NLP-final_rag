@@ -1,4 +1,8 @@
 title: พื้นฐานดินและปุ๋ยสำหรับเกษตรกร
+topic_th: พื้นฐานดินและปุ๋ย
+topic_en: soil and fertilizer basics
+category: general
+kind: practice
 source_name: กรมส่งเสริมการเกษตร; กรมพัฒนาที่ดิน (สำนักวิทยาศาสตร์เพื่อการพัฒนาที่ดิน); มหาวิทยาลัยเกษตรศาสตร์
 source_url: https://esc.doae.go.th/17-%E0%B8%98%E0%B8%B2%E0%B8%95%E0%B8%B8%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B8%8A/; https://iddindee.ldd.go.th/IDDindee/web/SoilData/3/3-4/pdf/046วัสดุปูนทางการเกษตร.pdf
 date_accessed: 2026-10-07

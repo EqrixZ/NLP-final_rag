@@ -1,4 +1,8 @@
 title: โรคใบด่าง เพลี้ยแป้ง และโรคโคนเน่าหัวเน่ามันสำปะหลัง (Cassava Mosaic Disease, Mealybug and Root Rot)
+topic_th: โรคใบด่างมันสำปะหลัง
+topic_en: cassava mosaic disease
+category: cassava
+kind: disease
 source_name: กรมส่งเสริมการเกษตร (เอกสารคำแนะนำที่ 1/2566 ศัตรูมันสำปะหลังและการจัดการ); กรมส่งเสริมการเกษตร (ข่าวประชาสัมพันธ์)
 source_url: https://mediatank.doae.go.th/medias/file_upload/02-2023/3-1759043809349595.pdf; https://doaenews.doae.go.th/archives/20348
 date_accessed: 2026-10-07

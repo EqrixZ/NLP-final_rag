@@ -1,4 +1,8 @@
 title: โรคกาบใบแห้ง (Sheath Blight)
+topic_th: โรคกาบใบแห้งของข้าว
+topic_en: rice sheath blight
+category: rice
+kind: disease
 source_name: กรมการข้าว (องค์ความรู้เรื่องข้าว Rice Knowledge Bank); International Rice Research Institute (IRRI Rice Knowledge Bank)
 source_url: https://rkb.ricethailand.go.th/web/content_page.php?code=RAOIJBTJGHM7MF6DWLWIPK1XTJ30Y; http://www.knowledgebank.irri.org/training/fact-sheets/pest-management/diseases/item/sheath-blight
 date_accessed: 2026-10-07

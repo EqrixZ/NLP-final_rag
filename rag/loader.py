@@ -3,6 +3,10 @@
 Expected file layout::
 
     title: โรคไหม้ข้าว (Rice Blast)
+    topic_th: โรคไหม้ข้าว            # short names used for suggestions / sidebar
+    topic_en: rice blast
+    category: rice                  # rice | durian | mango | cassava | vegetables | general
+    kind: disease                   # disease | pest | practice
     source_name: กรมการข้าว; IRRI
     source_url: https://...; https://...
     date_accessed: 2026-10-07
@@ -33,6 +37,10 @@ class Document:
     source_name: str = ""
     source_url: str = ""
     language: str = "th"
+    topic_th: str = ""
+    topic_en: str = ""
+    category: str = "general"
+    kind: str = "practice"
     metadata: dict[str, str] = field(default_factory=dict)
 
 
@@ -71,6 +79,10 @@ def load_document(path: Path) -> Document:
         source_name=meta.get("source_name", ""),
         source_url=meta.get("source_url", ""),
         language=meta.get("language") or detect_language(text),
+        topic_th=meta.get("topic_th") or title,
+        topic_en=meta.get("topic_en") or title,
+        category=meta.get("category", "general"),
+        kind=meta.get("kind", "practice"),
         metadata=meta,
     )
 
